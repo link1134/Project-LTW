@@ -39,6 +39,7 @@
             <h2 class="intro__title">Chào mừng bạn đến với DocTruyen!</h2>
             <p class="intro__text">Nơi bạn có thể khám phá hàng ngàn truyện tranh và tiểu thuyết đặc sắc.</p>
             <p class="intro__text">Đăng nhập ngay để lưu lại truyện yêu thích!</p>
+            <p class="intro__text">Chúc bạn đọc truyện vui vẻ</p>
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHplM2dicGQxbGZodHllcjVqdzVzcm12djVvOGR0a3lwc2d4NHV4YSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/11lxCeKo6cHkJy/giphy.webp" alt="dacing welcom">
         </section>
         <!-- form register -->
@@ -52,6 +53,9 @@
             </div>
             <div class="form__group">
                 <input type="password" class="form__input" placeholder="Xác nhận mật khẩu" name ="ConfirmPassword"required>
+            </div>
+            <div class="form__group">
+                <input type="text" class="form__input" placeholder="Nhập tên của bạn" name ="name"required>
             </div>
             <div class="form__group">
                 <input type="email" class="form__input" placeholder="Nhập email dùng đăng ký" name ="email"required>
