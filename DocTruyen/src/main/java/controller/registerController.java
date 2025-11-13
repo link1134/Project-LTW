@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +15,14 @@ import model.dao.UserDAO;
 /**
  * Servlet implementation class RegisterController
  */
-@WebServlet("/Register")
-public class RegisterController extends HttpServlet {
+@WebServlet("/register")
+public class registerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegisterController() {
+	public registerController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -32,7 +34,8 @@ public class RegisterController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/register.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -54,11 +57,11 @@ public class RegisterController extends HttpServlet {
 		boolean result = dao.registerUser(user);
 		if (result) {
 			request.setAttribute("message", "Đăng ký thành công");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 
 		} else {
 			request.setAttribute("error", "Đăng ký thất bại, tài khoản đã tồn tại!");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
 		}
 	}
 

@@ -1,0 +1,254 @@
+@charset "UTF-8";
+/* RESET CƠ BẢN */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BIẾN MÀU TOÀN CỤC */
+:root {
+  --main-color: #c3c5c2;
+  --second-color: #c3c5c2;
+  --main-background: #eff6ba;
+  --title-color: #046806ff;
+  --text-color: #28bb12;
+  --shadow-color: #595a59be;
+  --button-color: #0cc40cbe;
+  --hover-color: #0b300bbe;
+  --appbackground:url(https://Valvrareteam.b-cdn.net/Konacha_ac0e5b43.gif)
+}
+
+/* TOÀN TRANG */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  
+}
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+  
+}
+.intro__title {
+  font-size: 1.8rem;
+  color: var(--title-Color);
+}
+.intro__text {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.background-container{
+    background-image: var(--appbackground);
+}
+/* NAVBAR (giữ nguyên như bạn có) */
+.nav-bar__content--left--logo {
+  height: 70px;
+  width: auto;
+  transform: translateY(-10px);
+}
+
+.nav-bar__content--left--tittle-container {
+  font-size: 1.5rem;
+  color: var(--title-color);
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar__content--left--tittle {
+  color: var(--title-color);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.nav-bar__content--left {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  text-decoration: none;
+  gap: 12px;
+}
+
+.nav-bar__content--right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-bar__content--right--link {
+  text-decoration: none;
+  color: var(--title-color);
+  font-size: 1.5rem;
+}
+
+.nav-bar__content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.nav-bar {
+  background-color: var(--main-background);
+  box-shadow: 0 2px 4px #0000001a;
+  padding: 0 1rem 0.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  position: static;
+  z-index: 1000;
+}
+
+/* MAIN */
+main {
+  background-color: #FFFFFF;
+  min-height: 80vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+/* FORM */
+.login__form h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+}
+
+.login__form {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--shadow-color);
+  background-color: var(--main-background);
+}
+
+.form__group {
+  margin-bottom: 15px;
+}
+
+.form__input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form__button {
+  width: 100%;
+  padding: 12px;
+  color: #fff;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form__button:hover {
+  background-color: var(--hover-color);
+}
+
+.form__links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form__link {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.form__link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================
+   FOOTER (SỬ DỤNG BIẾN MÀU)
+   ========================== */
+
+.footer {
+  background-color: var(--main-background);
+  color: var(--text-color);
+  padding: 40px 20px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 -2px 6px var(--shadow-color);
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer__text {
+  font-size: 15px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.footer__text--highlight {
+  color: var(--title-color);
+  font-weight: 500;
+}
+
+.footer__email {
+  margin: 0;
+}
+
+.footer__email-link {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__email-link:hover {
+  color: var(--hover-color);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.footer__link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+  color: var(--hover-color);
+}
+
+.footer__copy {
+  font-size: 13px;
+  color: var(--title-color);
+  margin-top: 8px;
+}
+
+/* RESPONSIVE */
+@media (min-width: 640px) {
+  .footer__links {
+    flex-direction: row;
+    gap: 16px;
+  }
+}

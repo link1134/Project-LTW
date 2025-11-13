@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- main css2 -->
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+<body>
 <!-- header -->
     <header >
         <nav class="nav-bar">
@@ -41,7 +42,7 @@
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHplM2dicGQxbGZodHllcjVqdzVzcm12djVvOGR0a3lwc2d4NHV4YSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/11lxCeKo6cHkJy/giphy.webp" alt="dacing welcom">
         </section>
         <!-- form register -->
-        <form action="Register" class="login__form" method="post">
+        <form action="RegisterController" class="login__form" method="post">
             <h1 class="form__title">Đăng ký</h1>
             <div class="from_group">
                 <input type="text" class="form__input" placeholder="Nhập tài khoản hoặc email" name="username"required>
@@ -56,13 +57,10 @@
                 <input type="email" class="form__input" placeholder="Nhập email dùng đăng ký" name ="email"required>
             </div>
             <div class="form__group">
-                <input type="text" class="form__input" placeholder="Nhập tên của bạn" name ="name"required>
-            </div>
-            <div class="form__group">
                 <button class="form__button" type="submit">Đăng ký</button>
             </div>
             <div class="form__links">
-                <a href="/login.jsp" class="form__link">bạn đã có tài khoản?</a>
+                <a href="${pageContext.request.contextPath}/login" class="form__link">bạn đã có tài khoản?</a>
                 
                 
             </div>
@@ -90,7 +88,7 @@
     <span class="footer__copy">© 2025 - doctruyen.net</span>
   </div>
 </footer>
-<body>
+
     
 </body>
 </html>

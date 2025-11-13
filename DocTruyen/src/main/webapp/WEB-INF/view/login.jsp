@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đọc Truyện || Đăng Nhập</title>
     <!-- main css -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHplM2dicGQxbGZodHllcjVqdzVzcm12djVvOGR0a3lwc2d4NHV4YSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/11lxCeKo6cHkJy/giphy.webp" alt="dacing welcom">
         </section>
         <!-- formlogin -->
-        <form action="Login" class="login__form" method="post">
+        <form action="${pageContext.request.contextPath}/login" class="login__form" method="post">
             <h1 class="form__title">Đăng nhập</h1>
             <div class="from_group">
                 <input type="text" class="form__input" placeholder="Nhập tài khoản hoặc email" name="username"required>
@@ -60,7 +60,7 @@
                 <button class="form__button" type="submit">Đăng nhập</button>
             </div>
             <div class="form__links">
-                <a href="register.jsp" class="form__link">bạn chưa có tài khoản?</a>
+                <a href="${pageContext.request.contextPath}/register" class="form__link">bạn chưa có tài khoản?</a>
                 <a href="#" class="form__link">bạn quên mật khẩu?</a>
                 
             </div>
