@@ -34,7 +34,7 @@ public class registerController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/register.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login_register/register.jsp");
 		dispatcher.forward(request, response);
 	}
 
