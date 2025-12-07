@@ -73,7 +73,7 @@
                 <div class="list_chapter">
                     <ul class="list_chapter">
                         <li class="chapter_items">
-                            <a href="/HTML/chapter_detail.html" class="chapter_link">
+                            <a href="${pageContext.request.contextPath}/chapter-detail" class="chapter_link">
                                 <h4>Chương 1</h4>
                                 <h5>Hành tinh GARAPA</h5>
                                 <H6>6 giờ trước</H6>
@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="chapter_items">
-                            <a href="/HTML/chapter_detail.html" class="chapter_link">
+                            <a href="${pageContext.request.contextPath}/chapter-detail" class="chapter_link">
                                 <h4>Chương 2</h4>
                                 <h5>Hành tinh GARAPA</h5>
                                 <H6>6 giờ trước</H6>
@@ -91,7 +91,7 @@
                             </a>
                         </li>
                         <li class="chapter_items">
-                            <a href="/HTML/chapter_detail.html" class="chapter_link">
+                            <a href="${pageContext.request.contextPath}/chapter-detail" class="chapter_link">
                                 <h4>Chương 3</h4>
                                 <h5>Hành tinh GARAPA</h5>
                                 <H6>6 giờ trước</H6>
@@ -100,7 +100,7 @@
                             </a>
                         </li>
                         <li class="chapter_items">
-                            <a href="/HTML/chapter_detail.html" class="chapter_link">
+                            <a href="${pageContext.request.contextPath}/chapter-detail" class="chapter_link">
                                 <h4>Chương 4</h4>
                                 <h5>Hành tinh GARAPA</h5>
                                 <H6>6 giờ trước</H6>
@@ -109,7 +109,7 @@
                             </a>
                         </li>
                         <li class="chapter_items">
-                            <a href="/HTML/chapter_detail.html" class="chapter_link">
+                            <a href="${pageContext.request.contextPath}/chapter-detail" class="chapter_link">
                                 <h4>Chương 5</h4>
                                 <h5>Hành tinh GARAPA</h5>
                                 <H6>6 giờ trước</H6>
@@ -118,7 +118,7 @@
                             </a>
                         </li>
                         <li class="chapter_items">
-                            <a href="/HTML/chapter_detail.html" class="chapter_link">
+                            <a href="${pageContext.request.contextPath}/chapter-detail" class="chapter_link">
                                 <h4>Chương 6</h4>
                                 <h5>Hành tinh GARAPA</h5>
                                 <H6>6 giờ trước</H6>

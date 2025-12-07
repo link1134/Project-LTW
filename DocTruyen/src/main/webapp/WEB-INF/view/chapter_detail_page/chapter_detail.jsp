@@ -17,7 +17,7 @@
         <div class="header_content">
             <div class="top_bar"> 
                 <div class="back_to_strory">
-                    <a href="/HTML/story.html" class="back_">⬅DORAEMON</a>
+                    <a href="${pageContext.request.contextPath}/story_page" class="back_">⬅DORAEMON</a>
                 </div>
                 </div>
 
