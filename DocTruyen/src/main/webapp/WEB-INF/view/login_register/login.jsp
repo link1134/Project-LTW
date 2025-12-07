@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="vn">
 <head>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đọc Truyện || Đăng Nhập</title>
     <!-- main css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/login_register/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

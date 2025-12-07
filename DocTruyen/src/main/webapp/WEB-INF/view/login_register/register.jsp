@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- main css2 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/login_register/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
