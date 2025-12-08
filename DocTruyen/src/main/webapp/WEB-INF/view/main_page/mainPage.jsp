@@ -50,7 +50,7 @@
 
                 </div>
                 <div class="big-card">
-                    <img src="/IMAGE/image_processing20251206-2-12ogpga.jpg" alt="" class="big-card-img">
+                    <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-12ogpga.jpg" alt="" class="big-card-img">
                     <div class="big-card-content">
                         <div class="big-card-description">
                             <div>
@@ -109,7 +109,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -131,7 +131,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -153,7 +153,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -175,7 +175,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -197,7 +197,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -219,7 +219,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -241,7 +241,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -263,7 +263,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -285,7 +285,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -307,7 +307,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -334,7 +334,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -356,7 +356,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -378,7 +378,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -400,7 +400,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -422,7 +422,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -444,7 +444,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -466,7 +466,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -488,7 +488,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -510,7 +510,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -532,7 +532,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -559,7 +559,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -581,7 +581,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -603,7 +603,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -625,7 +625,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -647,7 +647,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -669,7 +669,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -691,7 +691,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -713,7 +713,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -735,7 +735,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -757,7 +757,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -784,7 +784,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -806,7 +806,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -828,7 +828,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -850,7 +850,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -872,7 +872,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -894,7 +894,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -916,7 +916,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -938,7 +938,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -960,7 +960,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
@@ -982,7 +982,7 @@
                 <div class="card">
                     <div class="card-wrapped">
                         <a href="">
-                            <img src="/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
