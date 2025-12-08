@@ -23,7 +23,7 @@ header {
 
 /* Thêm navbar*/
 .nav-left a, .nav-logo span, .nav-right a {
-	color: rgb(0 0 0/ 0.6);
+	color: black;
 	font-weight: bold;
 }
 
