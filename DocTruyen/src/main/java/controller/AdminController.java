@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    // Đặt tiền tố chung. Tôi sử dụng "views" vì nó phổ biến hơn.
-    // Nếu thư mục của bạn là /WEB-INF/view/admin/, hãy sửa lại chuỗi này.
+    
+   
 	private static final String ADMIN_VIEW_PREFIX = "/WEB-INF/view/admin/";   
     
     public AdminController() {
