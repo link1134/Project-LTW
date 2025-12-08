@@ -19,8 +19,7 @@ public class test_chapter_detail extends HttpServlet {
 
         System.out.println(">>> test_chapter_detail servlet RUNNING");
 
-        RequestDispatcher dispatcher =
-                request.getRequestDispatcher("/WEB-INF/view/chapter_detail_page/chapter_detail.jsp");
+        RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/view/chapter_detail_page/chapter_detail.jsp");
         dispatcher.forward(request, response);
     }
 }
