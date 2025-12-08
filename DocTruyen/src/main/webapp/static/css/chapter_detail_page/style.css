@@ -34,13 +34,13 @@ a {
  * =================================================================*/
 
 .header_content {
-    /* Đặt sticky cho header chung */
-    position: fixed;
+   
+    position: sticky;
     width: 100%;
     top: 0;
     background-color: var(--header-bg); 
     border-bottom: 1px solid var(--border-separator); 
-    padding: 10px 20px;
+    
     z-index: 100;
 }
 

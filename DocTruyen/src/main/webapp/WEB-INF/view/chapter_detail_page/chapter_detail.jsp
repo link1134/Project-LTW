@@ -13,29 +13,28 @@
     <title>Chapter</title>
 </head>
 <body >
-    <header>
-        <div class="header_content">
-            <div class="top_bar"> 
-                <div class="back_to_strory">
-                    <a href="${pageContext.request.contextPath}/story_page" class="back_">⬅DORAEMON</a>
-                </div>
-                </div>
+    <header class="header_content">
+		<div class="top_bar">
+			<div class="back_to_strory">
+				<a href="${pageContext.request.contextPath}/story_page"
+					class="back_">⬅DORAEMON</a>
+			</div>
+		</div>
 
-            <div class="nav_section"> 
-                <div class="chapter_name">
-                    <h1>Hành tinh GARAPA</h1>
-                </div>
-                
-                <div class="button_action">
-                    <button class="nav-btn prev-chapter">
-                        <a href="#">⬅Chương trước</a>
-                    </button>
-                    <button class="nav-btn next-chapter">
-                        <a href="#">Chương sau⮕</a>
-                    </button>
-                </div>
-            </div>
-    </header>
+		<div class="nav_section">
+			<div class="chapter_name">
+				<h1>Hành tinh GARAPA</h1>
+			</div>
+
+			<div class="button_action">
+				<button class="nav-btn prev-chapter">
+					<a href="#">⬅Chương trước</a>
+				</button>
+				<button class="nav-btn next-chapter">
+					<a href="#">Chương sau⮕</a>
+				</button>
+			</div>
+	</header>
     <main>
         <div class="content">
             
