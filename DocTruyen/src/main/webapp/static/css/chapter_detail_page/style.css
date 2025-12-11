@@ -18,9 +18,8 @@
 }
 
 body {
-    background-color: var(--main-background); 
-    color: var(--text-color);
-    font-family: 'Roboto', sans-serif;
+    background-color: rgb(17 24 39);
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif !important;
     margin: 0;
 }
 
@@ -28,48 +27,95 @@ a {
     text-decoration: none;
     color: inherit;
 }
+/*Header Css*/
 
-/* =================================================================
- * HEADER CONTENT (BỐ CỤC MỚI)
- * =================================================================*/
-
-.header_content {
-   
-    position: sticky;
-    width: 100%;
-    top: 0;
-    background-color: var(--header-bg); 
-    border-bottom: 1px solid var(--border-separator); 
+header {
+    /* Giả định header có chiều cao cố định và màu trắng/xám nhạt */
     
-    z-index: 100;
-}
-
-/* DÒNG 1: Tên truyện (Quay lại) - Căn trái */
-.top_bar {
+    background-color: rgb(17 24 39 /0.6);
+    /* Dùng flexbox để căn chỉnh (nếu có nội dung) */
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-    padding-bottom: 5px; 
+    z-index: 100;
+    top: 0;
+    box-shadow: 0 3px 6px #00000012, 0 10px 20px #0000000d;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+    
 }
 
-.back_to_strory .back_ {
-    font-size: 14px;
-    color: var(--back-link-color); 
-    font-weight: 500;
+/*THÊM NAVBAR*/
+.nav-left a,
+.nav-logo span,
+.nav-right a {
+    color: white;
+    font-weight: bold;
 }
-
-/* DÒNG 2: Tên chương và Nút điều hướng (Căn giữa) */
-.nav_section {
+.navbar {
     display: flex;
-    flex-direction: column; /* Xếp chồng tên chương và nút */
-    align-items: center; /* Căn giữa theo chiều ngang */
-    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    padding: 0 5rem;
+    box-sizing: border-box;
+    
+    font-size: .75rem;
+    text-transform: uppercase;
 }
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    list-style: none;
+}
+
+/* Logo cố định ở giữa */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--title-color);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.nav-logo img {
+    width: 3rem;
+    /* hoặc 24px, tuỳ bạn */
+    height: auto;
+    object-fit: contain;
+    padding-bottom: 1rem
+}
+
+.avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+}
+
+.nav_left_item a {
+    text-decoration: none;
+}
+
+.icon-btn {
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
 
 .chapter_name {
     text-align: center;
     width: 100%;
-    margin-bottom: 15px; /* Tăng khoảng cách với các nút */
+    margin-bottom: 15px;
 }
 
 .chapter_name h1 {
@@ -79,43 +125,181 @@ a {
     margin: 0;
 }
 
-/* =================================================================
- * BUTTON ACTION (Nút Chương trước / Chương sau)
- * =================================================================*/
-.button_action {
+
+main{
+    padding-top: 3rem;
+    margin-bottom: 3rem;
+}
+.content{
+    max-width: 640px;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+.story_name_carrier{
+    margin-bottom: 3rem;
     display: flex;
-    width: 100%; /* Chiếm 100% không gian */
-    justify-content: center; 
-    gap: 15px; /* Khoảng cách giữa hai nút */
-    /* Giới hạn độ rộng tối đa để các nút không quá dài trên màn hình lớn */
-    max-width: 900px; 
-    margin: 0 auto;
 }
-
-.nav-btn {
-    flex: 1; /* Mỗi nút chiếm phần bằng nhau, làm chúng dàn rộng */
-    
-    /* Thiết lập định dạng nút */
-    background-color: var(--button-color); 
-    border: none;
-    border-radius: 6px;
-    padding: 15px 0; /* Tăng padding để nút cao hơn */
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 700;
-    transition: background-color 0.2s;
-}
-
-.nav-btn a {
-    /* Đặt màu chữ tương phản cao */
-    color: var(--main-background); 
+.story_name_carrier a{
+    font-size: .875rem;
+    align-items: center;
     text-decoration: none;
-    display: block; 
+    display: flex;
+    margin-bottom: .5rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    color: rgb(156 163 175);
+}
+.story_chapter_name{
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+.chapter_controls{
+    gap: .5rem;
+    align-items: stretch;
+    flex-direction: column;
+    display: flex;
+}
+.chapter_controls div a{
+    white-space: nowrap;
+    border-radius: .5rem;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-decoration: inherit;
+    color: white;
+    background-color: rgb(31 41 55);
+}
+.chapter_controls div a:hover{
+    background-color: rgb(54, 71, 96);
+}
+.chapter_end_controller_one{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    margin-top: 3rem;
+}
+.chapter_end_controller_one a{
+    white-space: nowrap;
+    border-radius: .5rem;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    max-width: 616px;
+    width: 100%;
+    color: white;
+    background-color: rgb(37 99 235);
+}
+.chapter_end_controller_two{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    margin-top: .5rem;
+}
+.chapter_end_controller_two div{
+    max-width: 640px;
+    width: 100%;
+    display: flex;
+}
+.chapter_end_controller_two div button{
+    all:unset;
+    margin-left: .25rem;
+    cursor: pointer;
+}
+.chapter_end_controller_two div a, .chapter_end_controller_two div button{
+    white-space: nowrap;
+    border-radius: .5rem;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgb(31 41 55);
+    padding-left: .25rem;
+    padding-right: .25rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    width: 100%;
+    color: white;
+}
+.chapter_end_controller_two div a{
+    margin-right: .25rem;
 }
 
-.nav-btn:hover {
-    background-color: var(--hover-color);
-    box-shadow: 0 4px 10px var(--shadow-color);
+/*Footer css*/
+.footer {
+    background-color: #242526;
+    /* Màu nền đen/xám đậm */
+    color: #b0b3b8;
+    /* Màu chữ xám nhạt */
+    padding: 20px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer__text--highlight {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.footer__email {
+    margin-bottom: 15px;
+}
+
+.footer__email-link {
+    color: #1877f2;
+    transition: color 0.2s;
+}
+
+.footer__email-link:hover {
+    text-decoration: underline;
+}
+
+.footer__links {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer__link {
+    color: #b0b3b8;
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+}
+
+.footer_content {
+    padding: 0 20px;
 }
 
 /* =================================================================
@@ -125,7 +309,6 @@ a {
 .story_content {
     display: flex; 
     justify-content: center;
-    padding: 10px 0;
 }
 
 .list_img {
