@@ -1,0 +1,478 @@
+:root {
+    --main-color: #c3c5c2;
+    --second-color: #c3c5c2;
+    --main-background: #eff6ba;
+    --title-color: #046806ff;
+    --text-color: #28bb12;
+    --shadow-color: #595a59be;
+    --button-color: #0cc40cbe;
+    --hover-color: #0b300bbe;
+    --appbackground: url(https://Valvrareteam.b-cdn.net/Konacha_ac0e5b43.gif)
+}
+
+
+.bg_secondl {
+    background-color: rgb(156, 175, 170);
+}
+
+.bg_thirdl {
+    background-color: rgb(225, 218, 193);
+}
+
+.bg_fourthl {
+    background-color: rgb(178, 198, 213);
+}
+
+.bg_fifthl {
+    background-color: rgb(235, 198, 199);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #e5e7eb80;
+}
+
+main {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+.header_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+/* NAVBAR */
+.nav-left a,
+.nav-logo span,
+.nav-right a {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar.scrolled a,
+.navbar.scrolled span {
+    color: black;
+    /* chữ đổi sang trắng */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    padding: 0 5rem;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+.navbar.scrolled {
+    background: rgb(255, 255, 255);
+    opacity: 1;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    list-style: none;
+}
+
+/* Logo cố định ở giữa */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--title-color);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.nav-logo img {
+    width: 3rem;
+    /* hoặc 24px, tuỳ bạn */
+    height: auto;
+    object-fit: contain;
+    padding-bottom: 1rem
+}
+
+.avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+}
+
+.nav_left_item a {
+    text-decoration: none;
+}
+
+.icon-btn {
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
+
+
+/*FOOTER*/
+.footer {
+    background-color: #242526;
+    /* Màu nền đen/xám đậm */
+    color: #b0b3b8;
+    /* Màu chữ xám nhạt */
+    padding: 20px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer__text--highlight {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.footer__email {
+    margin-bottom: 15px;
+}
+
+.footer__email-link {
+    color: #1877f2;
+    transition: color 0.2s;
+}
+
+.footer__email-link:hover {
+    text-decoration: underline;
+}
+
+.footer__links {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer__link {
+    color: #b0b3b8;
+}
+
+.footer__link:hover {
+    text-decoration: underline;
+}
+
+.footer_content {
+    padding: 0 20px;
+}
+
+.list_manga {
+    padding-top: 5rem;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-bottom: 5rem;
+}
+
+.card {
+    padding: 0;
+    scroll-snap-align: start;
+    flex: 0 0 12rem;
+    height: 19rem;
+    border-radius: .5em;
+    
+    align-content: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+.card-img {
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+}
+
+.card-wrapped {
+    height: auto;
+    width: 100%;
+}
+.card-description{
+    overflow: hidden;
+}
+.card-description-name {
+    text-decoration: none;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2; 
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: black;
+}
+
+.card-description-chapter_time {
+    text-decoration: none;
+    color: rgb(117, 117, 117);
+    display: -webkit-box;          
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 1;        
+    overflow: hidden;
+}
+
+/* ====== CAROUSEL ====== */
+.carousel {
+    margin: 3em auto;
+    display: flex;
+    gap: 1em;
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+/* --- cấp anchor-name khác nhau --- */
+.list_manga:nth-of-type(1) .carousel {
+    anchor-name: --carousel1;
+}
+
+.list_manga:nth-of-type(2) .carousel {
+    anchor-name: --carousel2;
+}
+
+.list_manga:nth-of-type(3) .carousel {
+    anchor-name: --carousel3;
+}
+
+.list_manga:nth-of-type(4) .carousel {
+    anchor-name: --carousel4;
+}
+
+.list_manga:nth-of-type(5) .carousel {
+    anchor-name: --carousel5;
+}
+
+/* ====== Scrollbar hidden ====== */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* ====== SCROLL BUTTON ====== */
+/* base style */
+.carousel::scroll-button(right),
+.carousel::scroll-button(left) {
+    border: none;
+    height: 3rem;
+    width: 3rem;
+    background-color: rgb(187, 187, 187);
+    font-size: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    padding-bottom: .1em;
+    opacity: 75%;
+    border-color: #e5e7eb;
+    border-style: solid;
+}
+
+/* nút phải */
+.carousel::scroll-button(right) {
+    content: "→";
+    position-area: right center;
+    translate: -50%;
+}
+
+/* nút trái */
+.carousel::scroll-button(left) {
+    content: "←";
+    position-area: left center;
+    translate: 50%;
+}
+
+.carousel::scroll-button(left):hover,
+.carousel::scroll-button(right):hover {
+    opacity: 100%;
+}
+
+.carousel::scroll-button(left):disabled,
+.carousel::scroll-button(right):disabled {
+    opacity: 0;
+    cursor: auto;
+}
+
+.list_manga:nth-of-type(1) .carousel::scroll-button(left),
+.list_manga:nth-of-type(1) .carousel::scroll-button(right) {
+    position-anchor: --carousel1;
+}
+
+.list_manga:nth-of-type(2) .carousel::scroll-button(left),
+.list_manga:nth-of-type(2) .carousel::scroll-button(right) {
+    position-anchor: --carousel2;
+}
+
+.list_manga:nth-of-type(3) .carousel::scroll-button(left),
+.list_manga:nth-of-type(3) .carousel::scroll-button(right) {
+    position-anchor: --carousel3;
+}
+
+.list_manga:nth-of-type(4) .carousel::scroll-button(left),
+.list_manga:nth-of-type(4) .carousel::scroll-button(right) {
+    position-anchor: --carousel4;
+}
+
+.list_manga:nth-of-type(5) .carousel::scroll-button(left),
+.list_manga:nth-of-type(5) .carousel::scroll-button(right) {
+    position-anchor: --carousel5;
+}
+
+
+
+
+
+.big-card {
+    scroll-snap-align: center;
+    flex: 0 0 65%;
+    height: 28rem;
+    background-color: rgb(114, 114, 114);
+    border-radius: .5em;
+   
+    position: relative;
+    overflow: hidden;
+}
+.big-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom, 
+        rgba(0,0,0,0) 0%,     
+        rgba(0,0,0,1) 100%  
+    );
+    z-index: 2;  
+}
+.big-card-img{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+}
+.big-card-content{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    align-items: center;
+    color: white;
+}
+.big-card-name{
+    display: inline-block;
+    white-space: normal;
+    max-width: 35rem;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.big-card-details-btn a{
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: white;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: rgb(27, 23, 28);
+    font-weight: bold;
+}
+.big-card-description{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 50rem;
+    gap: 0.5rem;
+}
+.big-carousel {
+    margin-bottom: 9rem;
+    display: flex;
+    gap: 1em;
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scroll-marker-group: after;
+    position: relative;
+    z-index: 2;
+    top: 7rem;
+}
+
+.big-carousel::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+}
+
+.big-card:not(.card-no-marker)::scroll-marker {
+    content: '';
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    background-color: rgb(31 41 55 / 0.3);
+}
+
+.card-no-marker {
+    scroll-snap-align: none;
+    opacity: 0;
+}
+
+/* ====== Scrollbar hidden ====== */
+.big-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.big-wrapper {
+    position: relative;
+}
+
+.big-background {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 25rem;
+    top: 0;
+    left: 0;
+    background: linear-gradient(132deg, rgb(4, 5, 12) 0%, rgb(90, 111, 137) 100%);
+}
+
+.big-card::scroll-marker:target-current {
+    background-color: black;
+}
