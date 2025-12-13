@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="vn">
 <head>
@@ -14,7 +15,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet">
-	<script src="https://kit.fontawesome.com/335fe6f64f.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/335fe6f64f.js"
+	crossorigin="anonymous"></script>
 <title>Chapter</title>
 </head>
 <body>
@@ -49,6 +51,10 @@
 		</nav>
 	</header>
 	<main>
+		<div class="small_controller">
+			<button onclick="location.href='#navbar_mainPage'">↑</button>
+			<button onclick="location.href='#footer'">↓</button>
+		</div>
 		<div class="content">
 			<div class="story_name_carrier">
 				<a href="${pageContext.request.contextPath}/story_page"
@@ -153,12 +159,12 @@
 		<div class="chapter_end_controller_two">
 			<div>
 				<a href=""> Chương trước </a>
-				<button>lên đầu</button>
+				<button onclick="location.href='#navbar_mainPage'">lên đầu</button>
 			</div>
 		</div>
 
 	</main>
-	<footer class="footer">
+	<footer class="footer" id="footer">
 		<div class="footer__container">
 			<p class="footer__text footer__text--highlight">Contact for work,
 				copyright and more:</p>
