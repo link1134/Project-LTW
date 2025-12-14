@@ -19,15 +19,15 @@
             <div class="logo"><h1>Admin Panel</h1></div>
             <nav class="main-nav">
                 <ul>
-                   <li><a href="admin.html" class="nav-item">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/dashboard" class="nav-item">Trang chủ</a></li>
                     
                     <li class="nav-group-title">Quản lý Nội dung</li>
-                    <li><a href="admin_story_list.html" class="nav-item">Danh Sách Truyện</a></li>
-                    <li><a href="admin_new_story.html" class="nav-item">Đăng Truyện Mới</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/story-list" class="nav-item">Danh Sách Truyện</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/new-story" class="nav-item active">Đăng Truyện Mới</a></li>
                     
                     
                     <li class="nav-group-title">Quản lý Dữ liệu</li>
-                    <li><a href="admin_genre_management.html" class="nav-item active">Quản lý Thể loại</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/genre-management" class="nav-item">Quản lý Thể loại</a></li>
                 </ul>
             </nav>
             <div class="admin-logout">

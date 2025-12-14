@@ -109,21 +109,21 @@
             <div class="carousel">
                 <div class="card">
                     <div class="card-wrapped">
-                        <a href="">
-                            <img src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg" alt="" class="card-img">
+                        <a href="${pageContext.request.contextPath}/story_page">
+                            <img src="${pageContext.request.contextPath}/IMAGE/thumnail.png" alt="" class="card-img">
                         </a>
                     </div>
                     <div class="card-description">
                         <a href="" class="card-description-name">
                             <h3>
-                                IDOLxIDOL STORY
+                                Doraemon
                             </h3>
                         </a>
                         <h5>
                             <a href="" class="card-description-chapter_time">
-                                <span>C.1</span>
+                                <span>C.6</span>
                                 -
-                                <span>1 ngày trước</span>
+                                <span>6 ngày trước</span>
                             </a>
 
                             </h4>
