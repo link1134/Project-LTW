@@ -112,7 +112,8 @@
 		Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue,
 		sans-serif;
 }
-.main_logo{
+
+.main_logo {
 	text-decoration: none
 }
 </style>
@@ -122,12 +123,13 @@
 		<nav class="navbar" id="navbar">
 			<!-- Left menu -->
 			<ul class="nav-left">
-				
-				<li class="nav_left_item"><a href="#">Đăng truyện</a></li>
+
+
 			</ul>
 
 			<!-- Center logo -->
-			<a class="main_logo" href="${pageContext.request.contextPath}\main_page">
+			<a class="main_logo"
+				href="${pageContext.request.contextPath}\home_page">
 				<div class="nav-logo">
 					<img
 						src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
@@ -147,7 +149,8 @@
 					class="avatar" alt="User" id="userAvatar">
 
 					<div class="user_dropdown" id="userDropdown">
-						<a href="#"> Danh sách theo dõi</a> <a href="#"> Lịch sử đọc</a>
+						<a href="${pageContext.request.contextPath}\follow-page"> Danh
+							sách theo dõi</a> <a href="${pageContext.request.contextPath}\history-page"> Lịch sử đọc</a>
 						<hr>
 						<a href="#" class="logout"> Đăng xuất</a>
 					</div></li>

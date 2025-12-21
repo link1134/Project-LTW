@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
     <header >
         <nav class="nav-bar">
             <div class="nav-bar__content">
-                <a class="nav-bar__content--left" href="/" data-discorver="true">
+                <a class="nav-bar__content--left" href="${pageContext.request.contextPath }/home_page" data-discorver="true">
                     <img src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png" alt="" class="nav-bar__content--left--logo">
                     <div class="nav-bar__content--left--tittle-container">
                         <h1 class="nav-bar__content--left--tittle">DocTruyen</h1>
