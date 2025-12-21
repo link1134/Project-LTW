@@ -49,31 +49,26 @@
 
 /*Chỗ này của cái search*/
 .search_overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 2000;
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 2000;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease;
 }
 
-
 .search_box {
-    background: white;
-    padding: 15px 20px;
-    width: 100%;
-
-    transform: translateY(-120%);
-    transition: transform 0.4s ease;
-
-    display: flex;
-    justify-content: center;
+	background: white;
+	padding: 15px 20px;
+	width: 100%;
+	transform: translateY(-120%);
+	transition: transform 0.4s ease;
+	display: flex;
+	justify-content: center;
 }
 
 .search_box input {
@@ -86,34 +81,39 @@
 }
 
 .search_overlay.active {
-    opacity: 1;
-    visibility: visible;
+	opacity: 1;
+	visibility: visible;
 }
 
 .search_overlay.active .search_box {
-    transform: translateY(0);
+	transform: translateY(0);
 }
-.search_box_inner{
+
+.search_box_inner {
 	display: flex;
 	flex-direction: column;
 	max-width: 768px;
 	width: 100%
 }
+
 .search_box_inner div {
 	justify-content: flex-end;
 	display: flex;
 	margin-top: 0.5em;
-	
 	text-decoration: none;
-	
-	
 }
-.search_box_inner div a{
+
+.search_box_inner div a {
 	font-size: 14px;
 	text-decoration: none;
 	font-weight: bolder;
-	color: rgb(107 114 128);
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+	color: rgb(107, 114, 128);
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+		Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue,
+		sans-serif;
+}
+.main_logo{
+	text-decoration: none
 }
 </style>
 </head>
@@ -122,18 +122,18 @@
 		<nav class="navbar" id="navbar">
 			<!-- Left menu -->
 			<ul class="nav-left">
-				<li class="nav_left_item"><a href="#">Ủng hộ</a></li>
-				<li class="nav_left_item"><a href="#">Discord</a></li>
-				<li class="nav_left_item"><a href="#">Hội kín</a></li>
+				
 				<li class="nav_left_item"><a href="#">Đăng truyện</a></li>
 			</ul>
 
 			<!-- Center logo -->
-			<div class="nav-logo">
-				<img
-					src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
-					alt="Logo"> <span>DocTruyen</span>
-			</div>
+			<a class="main_logo" href="${pageContext.request.contextPath}\main_page">
+				<div class="nav-logo">
+					<img
+						src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
+						alt="Logo"> <span>DocTruyen</span>
+				</div>
+			</a>
 			<!-- Right actions -->
 			<ul class="nav-right">
 				<li><button class="icon-btn" id="searchBtn">
@@ -161,7 +161,7 @@
 			<div class="search_box_inner">
 				<input type="text" placeholder="Tìm kiếm truyện">
 				<div>
-				<a href="#">Tìm kiếm nâng cao</a>
+					<a href="#">Tìm kiếm nâng cao</a>
 				</div>
 			</div>
 
