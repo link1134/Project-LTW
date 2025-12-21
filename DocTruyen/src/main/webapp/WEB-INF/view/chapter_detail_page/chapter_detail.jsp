@@ -23,7 +23,7 @@
 	<jsp:include page="/WEB-INF/view/utility/header.jsp"/>
 	<main>
 		<div class="small_controller">
-			<button onclick="location.href='#navbar_mainPage'">↑</button>
+			<button onclick="location.href='#navbar'">↑</button>
 			<button onclick="location.href='#footer'">↓</button>
 		</div>
 		<div class="content">
@@ -35,7 +35,7 @@
 			<h1 class="story_chapter_name">
 				<span></span> <span>Hành tinh GARAPA</span>
 			</h1>
-			<div class="chapter_controls">
+			<div class="chapter_controls" >
 				<div>
 					<a href="">chương sau</a>
 				</div>
