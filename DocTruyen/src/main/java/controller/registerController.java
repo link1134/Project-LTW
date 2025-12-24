@@ -16,14 +16,14 @@ import model.dao.UserDAO;
  * Servlet implementation class RegisterController
  */
 @WebServlet("/register")
-public class registerController extends HttpServlet {
+public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	private UserDAO userDAO = new UserDAO();
-	public registerController() {
+	public RegisterController() {
 		super();
 		// TODO Auto-generated constructor stub
 		

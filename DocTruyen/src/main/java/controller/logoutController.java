@@ -12,10 +12,10 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class logoutController
  */
 @WebServlet("/logout")
-public class logoutController extends HttpServlet {
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public logoutController() {
+	public LogoutController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
