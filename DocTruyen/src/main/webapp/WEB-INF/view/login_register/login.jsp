@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
         <form action="${pageContext.request.contextPath}/login" class="login__form" method="post">
             <h1 class="form__title">Đăng nhập</h1>
             <div class="from_group">
-                <input type="text" class="form__input" placeholder="Nhập tài khoản hoặc email" name="username"required>
+                <input type="text" class="form__input" placeholder="Nhập email" name="email"required>
             </div>
             <div class="form__group">
                 <input type="password" class="form__input" placeholder="Nhập mật khẩu" name ="password"required>

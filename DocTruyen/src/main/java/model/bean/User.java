@@ -1,15 +1,15 @@
 package model.bean;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
+	private static final long seriaVersionUID = 1l;
 	private int id;
 	private String userName,password,email,role;
-	private LocalDateTime createdAt;
 	private String avartarURL;
 	
 	/*Contructors*/
-	public User(int id, String userName, String password, String email, String role, LocalDateTime createdAt,
+	public User(int id, String userName, String password, String email, String role,
 			String avartarURL) {
 		super();
 		this.id = id;
@@ -17,7 +17,6 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.role = role;
-		this.createdAt = createdAt;
 		this.avartarURL = avartarURL;
 	}
 	public User() {
@@ -55,17 +54,14 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
 	public String getAvartarURL() {
 		return avartarURL;
 	}
 	public void setAvartarURL(String avartarURL) {
 		this.avartarURL = avartarURL;
+	}
+	public static long getSeriaversionuid() {
+		return seriaVersionUID;
 	}
 	
 	

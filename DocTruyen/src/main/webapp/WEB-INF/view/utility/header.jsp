@@ -150,9 +150,15 @@
 
 					<div class="user_dropdown" id="userDropdown">
 						<a href="${pageContext.request.contextPath}\follow-page"> Danh
-							sách theo dõi</a> <a href="${pageContext.request.contextPath}\history-page"> Lịch sử đọc</a>
+							sách theo dõi</a> <a
+							href="${pageContext.request.contextPath}\history-page"> Lịch
+							sử đọc</a>
 						<hr>
-						<a href="#" class="logout"> Đăng xuất</a>
+						<form action="${pageContext.request.contextPath}/logout"
+							method="post" class="logout">
+							<button type="submit" class="logout">Đăng xuất</button>
+						</form>
+
 					</div></li>
 
 			</ul>

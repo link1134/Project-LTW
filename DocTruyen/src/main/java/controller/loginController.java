@@ -23,6 +23,7 @@ public class loginController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	private UserDAO userDAO = new UserDAO();
 	public loginController() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -45,21 +46,26 @@ public class loginController extends HttpServlet {
 	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException { // TODO Auto-generated method stub
+	        throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		UserDAO dao = new UserDAO();
-		User user = dao.loginUser(username, password);
-		if (user != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			response.sendRedirect(request.getContextPath() + "/HomePage");
-		} else {
-			request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
-			request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
-		}
+	    request.setCharacterEncoding("UTF-8");
+
+	    String username = request.getParameter("email");
+	    String password = request.getParameter("password");
+
+	    User user = userDAO.loginUser(username, password);
+
+	    if (user != null) {
+	        HttpSession session = request.getSession();
+	        session.setAttribute("user", user);
+	        response.sendRedirect(request.getContextPath() + "/home_page");
+	    } else {
+	        request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+	        request.getRequestDispatcher("/WEB-INF/view/login_register/login.jsp")
+	               .forward(request, response);
+	    }
 	}
+
+
 
 }

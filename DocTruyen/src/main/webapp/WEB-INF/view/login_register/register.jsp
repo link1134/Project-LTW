@@ -43,22 +43,19 @@
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHplM2dicGQxbGZodHllcjVqdzVzcm12djVvOGR0a3lwc2d4NHV4YSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/11lxCeKo6cHkJy/giphy.webp" alt="dacing welcom">
         </section>
         <!-- form register -->
-        <form action="RegisterController" class="login__form" method="post">
+        <form action="register" class="login__form" method="post">
             <h1 class="form__title">Đăng ký</h1>
-            <div class="from_group">
-                <input type="text" class="form__input" placeholder="Nhập tài khoản hoặc email" name="username"required>
+            <div class="form__group">
+                <input type="email" class="form__input" placeholder="Nhập email dùng đăng ký" name ="email"required>
+            </div>
+             <div class="form__group">
+                <input type="text" class="form__input" placeholder="Nhập tên của bạn" name ="name"required>
             </div>
             <div class="form__group">
                 <input type="password" class="form__input" placeholder="Nhập mật khẩu" name ="password"required>
             </div>
             <div class="form__group">
                 <input type="password" class="form__input" placeholder="Xác nhận mật khẩu" name ="ConfirmPassword"required>
-            </div>
-            <div class="form__group">
-                <input type="text" class="form__input" placeholder="Nhập tên của bạn" name ="name"required>
-            </div>
-            <div class="form__group">
-                <input type="email" class="form__input" placeholder="Nhập email dùng đăng ký" name ="email"required>
             </div>
             <div class="form__group">
                 <button class="form__button" type="submit">Đăng ký</button>
@@ -69,8 +66,7 @@
                 
             </div>
             
-                
-            </div>
+               
         </form>
     </main>
      <!-- footer -->
