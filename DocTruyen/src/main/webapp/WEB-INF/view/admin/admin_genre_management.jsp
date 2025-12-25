@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+	
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Quản lý Thể loại</title>
@@ -38,16 +41,23 @@
         <main class="content-area">
             <header class="content-header">
                 <h2>Quản lý Thể loại</h2>
-                <p>Thêm, sửa, xóa các thể loại truyện.</p>
+                <p>Thêm, xóa các thể loại truyện.</p>
             </header>
             
             <section id="genres" class="content-panel active">
                 <h3>Quản lý Thể loại</h3>
-                
+                <c:if test="${not empty sessionScope.message}">
+                <div style="color: green; margin-bottom: 10px;">${sessionScope.message}</div>
+                <c:remove var="message" scope="session"/>
+                </c:if>
+                <c:if test="${not empty sessionScope.error}">
+                <div style="color: red; margin-bottom: 10px;">${sessionScope.error}</div>
+                <c:remove var="error" scope="session"/>
+                </c:if>
                 <div class="genre-add-section">
                     <h4>Thêm Thể loại mới</h4>
-                    <form class="inline-form">
-                        <input type="text" placeholder="Tên Thể loại (ví dụ: Hành động)">
+                    <form class="inline-form"action="${pageContext.request.contextPath}/admin/genre-management" method="POST">
+                        <input type="text" name="genreName" placeholder="Tên Thể loại (ví dụ: Hành động)"required>
                         <button type="submit" class="btn btn-secondary">Thêm mới</button>
                     </form>
                 </div>
@@ -58,23 +68,23 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Tên Thể loại</th>
-                                <th>Slug</th>
-                                <th>Số truyện</th>
-                                <th>Thao tác</th>
+                				<th>Tên Thể loại</th>
+                				<th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Hài hước</td>
-                                <td>hai-huoc</td>
-                                <td>150</td>
-                                <td>
-                                    <button class="btn btn-edit">Sửa</button>
-                                    <button class="btn btn-delete">Xóa</button>
-                                </td>
-                            </tr>
+                            <c:forEach var="genre" items="${genreList}">
+                				<tr>
+				                    <td>${genre.id}</td>
+				                    <td>${genre.name}</td>
+                    				<td>
+				                        
+				                        <a href="${pageContext.request.contextPath}/admin/genre-management?action=delete&id=${genre.id}" 
+				                           class="btn btn-delete" 
+				                           onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+				                    </td>
+               					 </tr>
+            				</c:forEach>
                         </tbody>
                     </table>
                 </div>
