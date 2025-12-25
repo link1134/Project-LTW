@@ -60,9 +60,9 @@ public class LoginController extends HttpServlet {
 	        session.setAttribute("user", user);
 	        response.sendRedirect(request.getContextPath() + "/home_page");
 	    } else {
-	        request.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
-	        request.getRequestDispatcher("/WEB-INF/view/login_register/login.jsp")
-	               .forward(request, response);
+	    	HttpSession session = request.getSession();
+	        session.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+	        response.sendRedirect(request.getContextPath() + "/login");
 	    }
 	}
 
