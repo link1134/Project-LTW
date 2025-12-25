@@ -8,7 +8,7 @@
 
 ---
 
-## 📖 1. Giới thiệu dự án
+##  1. Giới thiệu dự án
 **DOCTRUYEN** là nền tảng đọc truyện trực tuyến được thiết kế nhằm mang lại trải nghiệm mượt mà cho độc giả. Dự án được xây dựng trong khuôn khổ môn học **Lập trình Web**, tập trung vào việc áp dụng mô hình MVC và quản lý dữ liệu trên SQL Server.
 
 ### Mục tiêu dự án:
@@ -52,8 +52,14 @@ Dự án được phát triển bởi nhóm sinh viên :
 
 | Họ và tên | MSSV | Vai trò |
 | :--- | :---: | :--- |
-|  **Mai Vũ Thành Hiển** | `23130099` | Phát triển Frontend & Backend |
-|  **Hồ Ngọc Hoàn Sơn** | `23130278` | Phát triển Frontend & Backend |
+|  (Leader)**Hồ Ngọc Hoàn Sơn** | `23130278` | Phát triển Frontend & Backend |
+|  (Co-Lead)**Mai Vũ Thành Hiển** | `23130099` | Phát triển Frontend & Backend |
+
 
 ---
+###  Nhóm xin gửi lời cảm ơn chân thành đến thầy Lê Phi Hùng. 
+  Do kiến thức còn hạn chế, sản phẩm không tránh khỏi những thiếu sót, nhóm rất mong nhận được sự góp ý của thầy.
+
+  
+ >   © 2025 – Project DOCTRUYEN |  LTW – GVHD: LE PHI HUNG | SON&HIEN
 
