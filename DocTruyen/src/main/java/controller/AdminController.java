@@ -49,11 +49,7 @@ public class AdminController extends HttpServlet {
             targetView = ADMIN_VIEW_PREFIX + "admin_story_list.jsp";
             break;
             
-        case "new-story":
-            request.setAttribute("adminTitle", "Đăng Truyện Mới");
-            // Map tới admin_new_story.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_new_story.jsp";
-            break;
+      
             
         case "new-chapter":
             request.setAttribute("adminTitle", "Đăng Chương Mới");
