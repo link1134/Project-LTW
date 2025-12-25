@@ -1,6 +1,7 @@
 package model.bean;
 
 public class Genres {
+	
 	private int id;
 	private String name;
 	
@@ -27,6 +28,9 @@ public class Genres {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+	/*ToString*/
+	@Override
+	public String toString() {
+		return "Genres [id=" + id + ", name=" + name + "]";
+	}
 }
