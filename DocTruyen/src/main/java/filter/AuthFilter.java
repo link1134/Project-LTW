@@ -38,6 +38,10 @@ public class AuthFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 
 		String path = req.getRequestURI().substring(req.getContextPath().length());
+		if (path.startsWith("/static/")) {
+	        chain.doFilter(request, response);
+	        return;
+	    }
 		if (path.startsWith("/login") || path.startsWith("/register")) {
 			chain.doFilter(request, response);
 			return;
