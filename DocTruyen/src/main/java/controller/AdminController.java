@@ -61,11 +61,7 @@ public class AdminController extends HttpServlet {
             targetView = ADMIN_VIEW_PREFIX + "admin_new_chapter.jsp";
             break;
             
-        case "genre-management":
-            request.setAttribute("adminTitle", "Quản lý Thể loại");
-            // Map tới admin_genre_management.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_genre_management.jsp";
-            break;
+        
             
         default:
             // Nếu không khớp, trả về lỗi 404
