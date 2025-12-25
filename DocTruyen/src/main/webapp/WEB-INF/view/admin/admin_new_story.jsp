@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -43,7 +44,7 @@
             
             <section id="new-story" class="content-panel hidden">
                 <h3>Đăng Truyện Mới</h3>
-                <form class="admin-form" enctype="multipart/form-data">
+                <form class="admin-form" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/new-story"method="POST" >
                     
                     <div class="form-group">
                         <label for="title">Tên Truyện:</label>
@@ -70,11 +71,11 @@
                     <div class="form-group">
                         <label>Chọn Thể loại:</label>
                         <div class="genre-radio-buttons">
-                            <label><input type="radio" name="GenreId" value="1" checked> Hài hước</label>
-                            <label><input type="radio" name="GenreId" value="2"> Hành động</label>
-                            <label><input type="radio" name="GenreId" value="3"> Lãng mạn</label>
-                            <label><input type="radio" name="GenreId" value="4"> Giả tưởng</label>
-                            <label><input type="radio" name="GenreId" value="5"> Phiêu lưu</label>
+                            <c:forEach var="g" items="${genreList}">
+                            	<label style="margin-right: 15px;">
+                            		<input type="checkbox"name="genreID" value="${g.id}"> 	${g.name}
+                            	</label>
+                            </c:forEach>
                         </div>
                         <small class="help-text">Truyện được phân loại theo một thể loại chính.</small>
                     </div>
@@ -84,14 +85,14 @@
                         <textarea id="description" name="Description" rows="5" required></textarea>
                     </div>
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="status">Trạng thái:</label>
                         <select id="status" name="Status">
                             <option value="in-progress">Đang tiến hành</option>
                             <option value="completed">Hoàn thành</option>
                             <option value="paused">Tạm ngưng</option>
                         </select>
-                    </div>
+                    </div> -->
                     
                     <button type="submit" class="btn btn-primary">Đăng Truyện</button>
                 </form>
