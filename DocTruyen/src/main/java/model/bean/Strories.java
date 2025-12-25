@@ -3,6 +3,7 @@ package model.bean;
 import java.time.LocalDateTime;
 
 public  class Strories {
+	
 	private int id;
 	private String title,author,coverImageURL,
 				   bigCoverImageURL,description;
@@ -84,8 +85,13 @@ public  class Strories {
 		this.viewCount = viewCount;
 	}
 
-	
-	
+	/*toString*/
+	@Override
+	public String toString() {
+		return "Strories [id=" + id + ", title=" + title + ", author=" + author + ", coverImageURL=" + coverImageURL
+				+ ", bigCoverImageURL=" + bigCoverImageURL + ", description=" + description + ", createdAt=" + createdAt
+				+ ", lastUpdate=" + lastUpdate + ", viewCount=" + viewCount + "]";
+	}
 	
 	
 }
