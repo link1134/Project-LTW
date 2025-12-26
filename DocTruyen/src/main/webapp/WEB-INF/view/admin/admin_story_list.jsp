@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -53,24 +54,33 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Bìa</th>
                             <th>Tên Truyện</th>
-                            <th>Tác giả</th>
-                            <th>Chương mới nhất</th>
+                            <th>Tác giả</th>                      
                             <th>Thao tác</th>
+                            <th>lần cuối cập nhật</th>
+                            <th>số chương</th>      
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr data-story-id="123" data-story-title="Doraemon Plus">
-                            <td>123</td>
-                            <td>Doraemon Plus</td>
-                            <td>Fujiko Fujio</td>
-                            <td>125</td>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/admin/new-chapter" class="btn btn-action">Đăng Chapter</a>
-                                <button class="btn btn-edit">Sửa</button>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <table>
+	                    <tbody>
+	    					<c:forEach var="story" items="${storyList}">
+	    						<tr>
+	    							<td>${story.id}</td>
+	    							<td>
+                						<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="cover" style="width: 50px; height: 70px; object-fit: cover; border-radius: 4px;">
+            						</td>
+            						<td><strong>${story.title}</strong></td>
+            						<td>${story.author}</td>
+            						<td>
+            							<div class="btn-group">
+	            							<a href="${pageContext.request.contextPath}/admin/new-chapter?storyId=${story.id}" class="btn btn-action">Đăng Chapter</a>
+	            							<a href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}" class="btn btn-edit">Sửa</a>
+            							</div>
+            						</td>
+	    						</tr> 
+	    					</c:forEach>
+						</tbody>
                 </table>
             </section>
         </main>
