@@ -199,7 +199,7 @@ main {
 .card {
     padding: 0;
     scroll-snap-align: start;
-    flex: 0 0 12rem;
+    
     height: 19rem;
     border-radius: .5em;
     
@@ -225,13 +225,18 @@ main {
 }
 .card-description-name {
     text-decoration: none;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    line-clamp: 2; 
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+    font-size: .875rem;
     color: black;
+    display: block;
+    display: -webkit-box;          
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 2;        
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
 }
+
+
 
 .card-description-chapter_time {
     text-decoration: none;
@@ -245,12 +250,14 @@ main {
 /* ====== CAROUSEL ====== */
 .carousel {
     margin: 3em auto;
-    display: flex;
-    gap: 1em;
-    width: 100%;
+    display: grid;
+    gap: 1.5em;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: column;
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    grid-auto-columns: 10rem;
 }
 
 /* --- cấp anchor-name khác nhau --- */
