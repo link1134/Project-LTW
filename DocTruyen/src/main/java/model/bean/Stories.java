@@ -1,6 +1,6 @@
 package model.bean;
-
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public  class Stories {
 	private int id;
@@ -83,7 +83,16 @@ public  class Stories {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
+	public String getLastUpdateDaysAgo() {
+	    if (lastUpdate == null) return "";
 
+	    long days = ChronoUnit.DAYS.between(lastUpdate, LocalDateTime.now());
+
+	    if (days <= 0)
+	        return "hôm nay";
+
+	    return days + " ngày trước";
+	}
 	
 	
 	
