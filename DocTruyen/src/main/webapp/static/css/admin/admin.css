@@ -218,6 +218,8 @@ table th, table td {
     padding: 15px 25px; /* Ví dụ: 15px trên/dưới, 25px trái/phải */
     text-align: left;
     border-bottom: 1px solid #ecf0f1;
+    text-align: center;      /* căn giữa ngang */
+    vertical-align: middle;  /* căn giữa dọc */
 }
 table th {
     background-color: #f7f9fb;
