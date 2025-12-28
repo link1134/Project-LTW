@@ -44,63 +44,81 @@ public class NewStoryController extends HttpServlet {
 	}
 
 	// Xử lý dữ liệu form gửi lên
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		try {
-			// 1. Lấy thông tin text
-			String title = request.getParameter("Title");
-			String author = request.getParameter("Author");
-			String description = request.getParameter("Description");
-			String[] genreIds = request.getParameterValues("genreID");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    request.setCharacterEncoding("UTF-8");
+	    try {
+	        // 1. Lấy thông tin text
+	        String title = request.getParameter("Title");
+	        String author = request.getParameter("Author");
+	        String description = request.getParameter("Description");
+	        String[] genreIds = request.getParameterValues("genreID");
 
-			// 2. Tạo đối tượng Stories (Lúc này đường dẫn ảnh tạm để trống)
-			Stories stories = new Stories();
-			stories.setTitle(title);
-			stories.setAuthor(author);
-			stories.setDescription(description);
-			stories.setCoverImageURL("");
-			stories.setBigCoverImageURL("");
+	        // 2. Tạo đối tượng Stories (Lúc này đường dẫn ảnh tạm để trống)
+	        Stories stories = new Stories();
+	        stories.setTitle(title);
+	        stories.setAuthor(author);
+	        stories.setDescription(description);
+	        stories.setCoverImageURL(""); 
+	        stories.setBigCoverImageURL("");
+	        
+	        // 3. Gọi DAO để lưu truyện trước lấy ID
+	        int storyId = storyDAO.insertStoryFull(stories, genreIds);
 
-			// 3. Gọi DAO để lưu truyện trước lấy ID
-			int storyId = storyDAO.insertStoryFull(stories, genreIds);
+	        if (storyId != -1) {
+	            // 4. Thiết lập đường dẫn theo ID vừa lấy được
+	            String baseUploadPath = "D:\\WorkSpace\\JAVA\\DocTruyen\\src\\main\\webapp\\static\\uploads";//tự thay đường dẫn
+	          //String baseUploadPath= getServletContext().getRealPath("")+File.separator+"static" + File.separator + "uploads";//lưu vào server tomcat nhưng khi clean server mất hết
+	            String storyPath = baseUploadPath + File.separator + storyId; // Folder là ID
+	            
+	            File storyDIR = new File(storyPath);
+	            if (!storyDIR.exists()) storyDIR.mkdirs();
 
-			if (storyId != -1) {
-				// 4. Thiết lập đường dẫn theo ID vừa lấy được
-				String baseUploadPath = getServletContext().getRealPath("/static/uploads");// tự thay đường dẫn
-				// String baseUploadPath=
-				// getServletContext().getRealPath("")+File.separator+"static" + File.separator
-				// + "uploads";//lưu vào server tomcat nhưng khi clean server mất hết
-				String storyPath = baseUploadPath + File.separator + storyId; // Folder là ID
+	            // 5. Xử lý lưu file
+	            Part thumbPart = request.getPart("ThumnailImageURL");
+	            String thumbName = "thumb_" + System.currentTimeMillis() + ".jpg";
+	            thumbPart.write(storyPath + File.separator + thumbName);
 
-				File storyDIR = new File(storyPath);
-				if (!storyDIR.exists())
-					storyDIR.mkdirs();
+	            Part coverPart = request.getPart("CoverImageURL");
+	            String coverName = "cover_" + System.currentTimeMillis() + ".jpg";
+	            coverPart.write(storyPath + File.separator + coverName);
 
-				// 5. Xử lý lưu file
-				Part thumbPart = request.getPart("ThumnailImageURL");
-				String thumbName = "thumb_" + System.currentTimeMillis() + ".jpg";
-				thumbPart.write(storyPath + File.separator + thumbName);
+	            // 6. Cập nhật lại đường dẫn ảnh vào Database
+	            String thumbURL = "static/uploads/" + storyId + "/" + thumbName;
+	            String coverURL = "static/uploads/" + storyId + "/" + coverName;
+	            storyDAO.updateImagePaths(storyId, thumbURL, coverURL);
 
-				Part coverPart = request.getPart("CoverImageURL");
-				String coverName = "cover_" + System.currentTimeMillis() + ".jpg";
-				coverPart.write(storyPath + File.separator + coverName);
-
-				// 6. Cập nhật lại đường dẫn ảnh vào Database
-				String thumbURL = "static/uploads/" + storyId + "/" + thumbName;
-				String coverURL = "static/uploads/" + storyId + "/" + coverName;
-				storyDAO.updateImagePaths(storyId, thumbURL, coverURL);
-
-				request.getSession().setAttribute("message", "Tạo truyện mới thành công với ID: " + storyId);
-				response.sendRedirect(request.getContextPath() + "/admin/story-list");
-			} else {
-				request.setAttribute("error", "Lỗi lưu Database!");
-				doGet(request, response);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			request.setAttribute("error", "Lỗi hệ thống: " + e.getMessage());
-			doGet(request, response);
-		}
+	            request.getSession().setAttribute("message", "Tạo truyện mới thành công với ID: " + storyId);
+	            response.sendRedirect(request.getContextPath() + "/admin/story-list");
+	        } else {
+	            request.setAttribute("error", "Lỗi lưu Database!");
+	            doGet(request, response);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        request.setAttribute("error", "Lỗi hệ thống: " + e.getMessage());
+	        doGet(request, response);
+	    }
 	}
-}
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
+
