@@ -42,7 +42,8 @@ public class GenreController extends HttpServlet {
 		    return;
 		}
 		// Lấy danh sách từ DB và gửi sang JSP
-		
+		request.setAttribute("activePage", "genre-management");
+
 		List<Genres> list = genreDAO.getAllGenres();
 		request.setAttribute("genreList", list);
 		request.getRequestDispatcher(ADMIN_VIEW_PREFIX + "admin_genre_management.jsp").forward(request, response);

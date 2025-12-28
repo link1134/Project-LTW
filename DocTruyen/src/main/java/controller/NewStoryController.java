@@ -40,6 +40,7 @@ public class NewStoryController extends HttpServlet {
 		List<Genres> listG = genreDAO.getAllGenres();
 		request.setAttribute("genreList", listG);
 		request.setAttribute("isEdit", false);
+		request.setAttribute("activePage", "new-story");
 		request.getRequestDispatcher(ADMIN_VIEW_PREFIX + "admin_new_story.jsp").forward(request, response);
 	}
 

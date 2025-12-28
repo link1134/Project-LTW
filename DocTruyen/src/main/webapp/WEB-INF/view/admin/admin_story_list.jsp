@@ -20,35 +20,7 @@
 <body>
 	<div class="dashboard-container">
 
-		<aside class="sidebar">
-			<div class="logo">
-				<h1>Admin Panel</h1>
-			</div>
-			<nav class="main-nav">
-				<ul>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/dashboard"
-						class="nav-item">Trang chủ</a></li>
-
-					<li class="nav-group-title">Quản lý Nội dung</li>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/story-list"
-						class="nav-item active">Danh Sách Truyện</a></li>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/new-story"
-						class="nav-item">Đăng Truyện Mới</a></li>
-
-
-					<li class="nav-group-title">Quản lý Dữ liệu</li>
-					<li><a
-						href="${pageContext.request.contextPath}/admin/genre-management"
-						class="nav-item">Quản lý Thể loại</a></li>
-				</ul>
-			</nav>
-			<div class="admin-logout">
-				<a href="#" class="logout-btn">Đăng xuất</a>
-			</div>
-		</aside>
+		<jsp:include page="/WEB-INF/view/utility/admin_sidebar.jsp" />
 
 		<main class="content-area">
 			<header class="content-header">
@@ -99,7 +71,9 @@
 											href="${pageContext.request.contextPath}/admin/new-chapter?storyId=${story.id}"
 											class="btn btn-action">Quản lý chapter</a> <a
 											href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
-											class="btn btn-edit">Sửa</a>
+											class="btn btn-edit">Sửa</a> <a
+											href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
+											class="btn btn-edit">Xóa</a>
 									</div>
 								</td>
 

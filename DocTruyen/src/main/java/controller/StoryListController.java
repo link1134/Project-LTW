@@ -31,6 +31,8 @@ public class StoryListController extends HttpServlet {
 		
 		//lấy danh sách truyện trong DB
 		List<Stories> listStroies= storyDAO.getAllStories();
+		request.setAttribute("activePage", "story-list");
+
 		request.setAttribute("storyList", listStroies);
 		request.getRequestDispatcher(ADMIN_VIEW_PREFIX+"admin_story_list.jsp").forward(request, response);;
 		

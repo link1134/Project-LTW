@@ -31,7 +31,19 @@ public class StoryDAO {
 
 		return listStories;
 	}
+	public void deleteStories(int id) {
+	    String sql = "DELETE FROM Stories WHERE id = ?";
 
+	    try (Connection conn = DBContext.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setInt(1, id);      
+	        ps.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 	public List<Stories> getNewestStories() {
 		List<Stories> result = new ArrayList<>();
 		String sql = "select top 24 * from Stories order by last_update desc";
