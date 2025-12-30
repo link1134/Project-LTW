@@ -67,9 +67,12 @@
 
 								<td>
 									<div class="btn-group">
-										<a
-											href="${pageContext.request.contextPath}/admin/new-chapter?storyId=${story.id}"
-											class="btn btn-action">Quản lý chapter</a> <a
+										<c:url var="chapterManagerUrl" value="/admin/chapter-manager">
+											<c:param name="storyId" value="${story.id}" />
+											<c:param name="storyTitle" value="${story.title}" />
+										</c:url>
+										<a href="${chapterManagerUrl}" class="btn btn-action">
+											Quản lý chapter </a> <a
 											href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
 											class="btn btn-edit">Sửa</a> <a
 											href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"

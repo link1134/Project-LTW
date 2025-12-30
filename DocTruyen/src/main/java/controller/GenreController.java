@@ -22,7 +22,7 @@ public class GenreController extends HttpServlet {
 
 	}
 
-	// doGet: Dùng để hiển thị danh sách thể loại lên bảng
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");

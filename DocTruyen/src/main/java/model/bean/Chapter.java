@@ -9,6 +9,7 @@ public class Chapter {
 	private int chapterNumber;
 	private String title;
 	private LocalDateTime publishedAt;
+	private String status;
 	
 	/*Contructors*/
 	
@@ -16,7 +17,7 @@ public class Chapter {
     }
 	
 	public Chapter(int id, int storyID, String displayNumChapter, int chapterNumber, String tittle,
-			LocalDateTime publishedAt) {
+			LocalDateTime publishedAt, String status) {
 		super();
 		this.id = id;
 		this.storyID = storyID;
@@ -24,6 +25,7 @@ public class Chapter {
 		this.chapterNumber = chapterNumber;
 		this.title = tittle;
 		this.publishedAt = publishedAt;
+		this.status = status;
 	}
 	
 	/*Getter và setter*/
@@ -62,6 +64,22 @@ public class Chapter {
 	}
 	public void setPublishedAt(LocalDateTime publishedAt) {
 		this.publishedAt = publishedAt;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setStoryID(int storyID) {
+		this.storyID = storyID;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }

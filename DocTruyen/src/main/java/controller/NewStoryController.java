@@ -27,7 +27,6 @@ public class NewStoryController extends HttpServlet {
 	private StoryDAO storyDAO = new StoryDAO();
 	private GenreDAO genreDAO = new GenreDAO();
 	private static final String ADMIN_VIEW_PREFIX = "/WEB-INF/view/admin/";
-
 	public NewStoryController() {
 		super();
 
@@ -67,7 +66,7 @@ public class NewStoryController extends HttpServlet {
 
 	        if (storyId != -1) {
 	            // 4. Thiết lập đường dẫn theo ID vừa lấy được
-	            String baseUploadPath = "D:\\WorkSpace\\JAVA\\DocTruyen\\src\\main\\webapp\\static\\uploads";//tự thay đường dẫn
+	            String baseUploadPath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen\\src\\main\\webapp\\static\\uploads";//tự thay đường dẫn
 	          //String baseUploadPath= getServletContext().getRealPath("")+File.separator+"static" + File.separator + "uploads";//lưu vào server tomcat nhưng khi clean server mất hết
 	            String storyPath = baseUploadPath + File.separator + storyId; // Folder là ID
 	            

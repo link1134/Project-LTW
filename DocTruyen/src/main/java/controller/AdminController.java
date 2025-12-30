@@ -51,11 +51,7 @@ public class AdminController extends HttpServlet {
             
       
             
-        case "new-chapter":
-            request.setAttribute("adminTitle", "Đăng Chương Mới");
-            // Map tới admin_new_chapter.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_new_chapter.jsp";
-            break;
+       
             
         
             
