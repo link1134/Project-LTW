@@ -55,4 +55,29 @@ public class PageDAO {
 		return false;
 	}
 
+	public boolean updatePageUrlByChapter(int chapterId, String oldDisplay, String newDisplay, int storyId) {
+
+		String oldPath = "static/uploads/" + storyId + "/" + oldDisplay + "/";
+		String newPath = "static/uploads/" + storyId + "/" + newDisplay + "/";
+
+		String sql = """
+				    UPDATE Page
+				    SET page_url = REPLACE(page_url, ?, ?)
+				    WHERE chapter_id = ?
+				""";
+
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setString(1, oldPath);
+			ps.setString(2, newPath);
+			ps.setInt(3, chapterId);
+
+			return ps.executeUpdate() >= 0;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

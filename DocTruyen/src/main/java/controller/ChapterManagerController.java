@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Chapter;
 import model.dao.ChapterDAO;
+import model.dao.PageDAO;
 
 /**
  * Servlet implementation class ChapterManagerController
@@ -98,9 +99,14 @@ public class ChapterManagerController extends HttpServlet {
 		// UPDATE DB
 		if (chapterDAO.updateChapterInfo(chapterId, newDisplay, title)) {
 
-			// CHỈ RENAME NẾU DISPLAY ĐỔI
 			if (!oldDisplay.equals(newDisplay)) {
+
+				// 1. Rename folder
 				renameChapterFolder(storyId, oldDisplay, newDisplay);
+
+				// 2. Update page_url
+				PageDAO pageDAO = new PageDAO();
+				pageDAO.updatePageUrlByChapter(chapterId, oldDisplay, newDisplay, storyId);
 			}
 		}
 
