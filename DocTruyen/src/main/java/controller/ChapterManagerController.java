@@ -39,9 +39,11 @@ public class ChapterManagerController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String storyTitle = request.getParameter("storyTitle");
-		List<Chapter> chapters = chapterDAO.getChaptersByStoryId(Integer.parseInt(request.getParameter("storyId")));
+		int storyId = Integer.parseInt(request.getParameter("storyId"));
+		List<Chapter> chapters = chapterDAO.getChaptersByStoryId(storyId);
 		request.setAttribute("chapters", chapters);
 		request.setAttribute("storyTitle", storyTitle);
+		request.setAttribute("storyId", storyId);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/admin/admin_chapter_manager.jsp");
 		dispatcher.forward(request, response);
 	}

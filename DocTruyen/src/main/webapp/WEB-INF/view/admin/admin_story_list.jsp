@@ -58,7 +58,7 @@
 								<td><img
 									src="${pageContext.request.contextPath}/${story.coverImageURL}"
 									alt="cover"
-									style="width: 50px; height: 70px; object-fit: cover; border-radius: 4px;">
+									style=" height: 5rem; object-fit: cover; border-radius: 4px;">
 								</td>
 
 								<td><strong>${story.title}</strong></td>

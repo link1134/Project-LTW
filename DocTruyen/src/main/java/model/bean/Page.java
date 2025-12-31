@@ -1,15 +1,15 @@
 package model.bean;
 
 public class Page {
-	private int id, storyID, pageNumber;
+	private int id, chapterId, pageNumber;
 	private String pageURL;
 
 	
 		/*Contructors*/
-	public Page(int id, int storyID, int pageNumber, String pageURL) {
+	public Page(int id, int chapterId, int pageNumber, String pageURL) {
 		super();
 		this.id = id;
-		this.storyID = storyID;
+		this.chapterId = chapterId;
 		this.pageNumber = pageNumber;
 		this.pageURL = pageURL;
 	}
@@ -27,12 +27,16 @@ public class Page {
 		this.id = id;
 	}
 
-	public int getStoryID() {
-		return storyID;
+
+
+
+
+	public int getChapterId() {
+		return chapterId;
 	}
 
-	public void setStoryID(int storyID) {
-		this.storyID = storyID;
+	public void setChapterId(int chapterId) {
+		this.chapterId = chapterId;
 	}
 
 	public int getPageNumber() {

@@ -102,11 +102,12 @@
 											${chapter.status == 'PUBLISHED' ? 'selected' : ''}>
 											PUBLISHED</option>
 								</select></td>
-								<td class="chapter_action_group">
-
-									<button>
-										<i class="fa-solid fa-file-pen"></i>
-									</button>
+								<td class="chapter_action_group"><a
+									href="${pageContext.request.contextPath}/admin/page-manager?id=${chapter.id}&displayNum=${chapter.displayNumChapter}&storyId=${storyId}">
+										<button>
+											<i class="fa-solid fa-file-pen"></i>
+										</button>
+								</a>
 									<button type="button" class="btn-edit"
 										data-chapter-id="${chapter.id}"
 										data-display="${chapter.displayNumChapter}"
@@ -115,8 +116,7 @@
 									</button>
 									<button>
 										<i class="fa-solid fa-xmark" style="color: red"></i>
-									</button>
-								</td>
+									</button></td>
 							</tr>
 						</c:forEach>
 						<tr id="add-chapter-row" style="display: none;">
