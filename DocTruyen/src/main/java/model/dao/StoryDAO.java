@@ -31,19 +31,20 @@ public class StoryDAO {
 
 		return listStories;
 	}
+
 	public void deleteStories(int id) {
-	    String sql = "DELETE FROM Stories WHERE id = ?";
+		String sql = "DELETE FROM Stories WHERE id = ?";
 
-	    try (Connection conn = DBContext.getConnection();
-	         PreparedStatement ps = conn.prepareStatement(sql)) {
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-	        ps.setInt(1, id);      
-	        ps.executeUpdate();
+			ps.setInt(1, id);
+			ps.executeUpdate();
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
+
 	public List<Stories> getNewestStories() {
 		List<Stories> result = new ArrayList<>();
 		String sql = "select top 24 * from Stories order by last_update desc";
@@ -254,6 +255,28 @@ public class StoryDAO {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	// lấy truyện theo thể loại
+	public List<Stories> getStoriesByGenre(String genreName) {
+		List<Stories> result = new ArrayList<>();
+		String sql = "SELECT s.* FROM Stories s JOIN Story_Genre sg ON s.id = sg.story_id JOIN Genres g ON sg.genre_id = g.id  WHERE g.name = ?  ORDER BY s.last_update DESC";
+
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setString(1, genreName);
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					result.add(new Stories(rs.getInt("id"), rs.getString("title"), rs.getString("author"),
+							rs.getString("coverImageURL"), rs.getString("bigCoverImageUrl"),
+							rs.getString("description"), rs.getTimestamp("created_at").toLocalDateTime(),
+							rs.getTimestamp("last_update").toLocalDateTime(), rs.getInt("view_counnt")));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {
