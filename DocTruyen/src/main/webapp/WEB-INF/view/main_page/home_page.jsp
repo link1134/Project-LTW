@@ -92,586 +92,78 @@
 		<div class="list_manga bg_secondl">
 			<h1>ROMCOM</h1>
 			<div class="carousel">
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
+				<c:forEach var="story" items="${romcomStories}">
+					<div class="card">
+						<div class="card-wrapped">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
+                        		<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
+                    		</a>
+						</div>
+						<div class="card-description">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
+                        		<h3><c:out value="${story.title}"/></h3>
+                    		</a>
+							<h5>
+								<a href="" class="card-description-chapter_time"> <span>C.1</span>
+									- <span>1 ngày trước</span>
+								</a>
+	
+							</h5>
+						</div>
 					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 		<div class="list_manga bg_thirdl">
 			<h1>ONESHOT</h1>
 			<div class="carousel">
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
+				<c:forEach var="story" items="${oneshotStories}">
+					<div class="card">
+						<div class="card-wrapped">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
+                        		<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
+                    		</a>
+						</div>
+						<div class="card-description">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
+                        		<h3><c:out value="${story.title}"/></h3>
+                    		</a>
+							<h5>
+								<a href="" class="card-description-chapter_time"> <span>C.1</span>
+									- <span>1 ngày trước</span>
+								</a>
+	
+							</h5>
+						</div>
 					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
+				</c:forEach>
+				
 			</div>
 		</div>
 		<div class="list_manga bg_fourthl">
 			<h1>FANTASY</h1>
 			<div class="carousel">
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
+				<c:forEach var="story" items="${fantasyStories}">
+					<div class="card">
+						<div class="card-wrapped">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
+                        		<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
+                    		</a>
+						</div>
+						<div class="card-description">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
+                        		<h3><c:out value="${story.title}"/></h3>
+                    		</a>
+							<h5>
+								<a href="" class="card-description-chapter_time"> <span>C.1</span>
+									- <span>1 ngày trước</span>
+								</a>
+	
+							</h5>
+						</div>
 					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
-
-						</h5>
-					</div>
-				</div>
+				</c:forEach>
+				
 			</div>
 		</div>
 	</main>
