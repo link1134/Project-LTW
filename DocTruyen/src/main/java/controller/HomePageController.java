@@ -33,12 +33,15 @@ public class HomePageController extends HttpServlet {
         List<Stories> oneshotStories = storyDAO.getStoriesByGenre("ONESHOT");
         // 4. Lấy danh sách truyện FANTASY
         List<Stories> fantasyStories = storyDAO.getStoriesByGenre("FANTASY");
-		// 5. Đưa danh sách vào request attribute để JSP có thể truy cập
+        // 5. Lấy 9 truyện mới nhất load lên banner
+        List<Stories> list9NewStories = storyDAO.get9NewestStories();
+		// 6. Đưa danh sách vào request attribute để JSP có thể truy cập
 		request.setAttribute("newestStories", newestStories);
 		request.setAttribute("romcomStories", romcomStories);
 		request.setAttribute("fantasyStories", fantasyStories);
 		request.setAttribute("oneshotStories", oneshotStories);
-		// 6. Forward request sang trang home_page.jsp
+		request.setAttribute("list9NewStories", list9NewStories);
+		// 7. Forward request sang trang home_page.jsp
 		request.getRequestDispatcher("/WEB-INF/view/main_page/home_page.jsp").forward(request, response);
 	}
 
