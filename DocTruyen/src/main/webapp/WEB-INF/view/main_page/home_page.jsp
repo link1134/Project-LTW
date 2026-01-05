@@ -29,35 +29,27 @@
 		<div class="big-wrapper">
 			<div class="big-carousel">
 				<div class="big-card card-no-marker"></div>
-				<div class="big-card">
-					<img
-						src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-12ogpga.jpg"
-						alt="" class="big-card-img">
-					<div class="big-card-content">
-						<div class="big-card-description">
-							<div>
-								<a href="">
-									<h2 class="big-card-name">Trường Hợp Tôi Đi Theo Tiểu Thư
-										Băng Giá Và Bị Cô Ấy Cưng Chiều Đến Mức Phát Điên!</h2>
-								</a>
+					<c:forEach var="story" items="${list9NewStories}">
+					<div class="big-card">
+						<img src="${pageContext.request.contextPath}/${story.bigCoverImageURL}"alt="<c:out value='${story.title}'/>" class="big-card-img">
+						<div class="big-card-content">
+							<div class="big-card-description">
+								<div>
+									<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
+										<h2 class="big-card-name"><c:out value="${story.title}"/></h2>
+									</a>
+								</div>
+								<div class="big-card-small-description">
+									<p><c:out value="${story.description}"/></p>
+								</div>
 							</div>
-							<div class="big-card-small-description">
-								<p>Chạn vương</p>
+							<div class="big-card-details-btn">
+								<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}">  Xem thông tin </a>
 							</div>
-						</div>
-						<div class="big-card-details-btn">
-							<a href=""> Xem thông tin </a>
 						</div>
 					</div>
-				</div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
-				<div class="big-card"></div>
+					</c:forEach>
+				
 				<div class="big-card card-no-marker"></div>
 
 			</div>
@@ -74,12 +66,12 @@
 							</a>
 						</div>
 						<div class="card-description">
-							<a href="" class="card-description-name">
+							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
 								<h3><c:out value="${story.title}"/></h3>
 							</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.6</span>
-									<span>6 ngày trước</span>
+								<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
+									-<span><c:out value="${story.timeAgo}" /></span>
 								</a>
 
 							</h5>
@@ -104,8 +96,8 @@
                         		<h3><c:out value="${story.title}"/></h3>
                     		</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.1</span>
-									- <span>1 ngày trước</span>
+								<a href="" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
+									- <span><c:out value="${story.timeAgo}" /></span>
 								</a>
 	
 							</h5>
@@ -129,8 +121,8 @@
                         		<h3><c:out value="${story.title}"/></h3>
                     		</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.1</span>
-									- <span>1 ngày trước</span>
+								<a href="" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
+									- <span><c:out value="${story.timeAgo}" /></span>
 								</a>
 	
 							</h5>
@@ -155,8 +147,8 @@
                         		<h3><c:out value="${story.title}"/></h3>
                     		</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.1</span>
-									- <span>1 ngày trước</span>
+								<a href="" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
+									- <span><c:out value="${story.timeAgo}" /></span>
 								</a>
 	
 							</h5>
