@@ -18,7 +18,7 @@ public class test_main_page extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("/WEB-INF/view/main_page/mainPage.jsp");
+				.getRequestDispatcher("/WEB-INF/view/main_page/home_page.jsp");
 		dispatcher.forward(request, response);
 	}
 

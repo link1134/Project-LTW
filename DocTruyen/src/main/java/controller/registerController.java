@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-
+import org.mindrot.jbcrypt.BCrypt;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,15 +16,17 @@ import model.dao.UserDAO;
  * Servlet implementation class RegisterController
  */
 @WebServlet("/register")
-public class registerController extends HttpServlet {
+public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public registerController() {
+	private UserDAO userDAO = new UserDAO();
+	public RegisterController() {
 		super();
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -34,8 +36,9 @@ public class registerController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login_register/register.jsp");
-		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher =
+		        request.getRequestDispatcher("/WEB-INF/view/login_register/register.jsp");
+		    dispatcher.forward(request, response);
 	}
 
 	/**
@@ -43,26 +46,38 @@ public class registerController extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		String name = request.getParameter("name");
+	        throws ServletException, IOException {
 
-		User user = new User(username, password, email, name);
-		UserDAO dao = new UserDAO();
+	    request.setCharacterEncoding("UTF-8");
 
-		boolean result = dao.registerUser(user);
-		if (result) {
-			request.setAttribute("message", "Đăng ký thành công");
-			request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
+	    String name = request.getParameter("name");
+	    String password = request.getParameter("password");
+	    String email = request.getParameter("email");
 
-		} else {
-			request.setAttribute("error", "Đăng ký thất bại, tài khoản đã tồn tại!");
-			request.getRequestDispatcher("/WEB-INF/view/register.jsp").forward(request, response);
-		}
+	    // BCrypt hash password
+	    String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+
+	    User newUser = new User();
+	    newUser.setUserName(name);
+	    newUser.setPassword(hashedPassword);
+	    newUser.setEmail(email);
+	    newUser.setRole("USER");
+
+	    boolean isSuccess = false;
+	    try {
+	        isSuccess = userDAO.registerUser(newUser);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    if (isSuccess) {
+	        response.sendRedirect(request.getContextPath() + "/login");
+	    } else {
+	        request.setAttribute("errorMessage", "Đăng ký thất bại! Email có thể đã tồn tại.");
+	        request.getRequestDispatcher("/WEB-INF/view/login_register/register.jsp")
+	               .forward(request, response);
+	    }
 	}
+
 
 }

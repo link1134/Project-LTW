@@ -5,54 +5,63 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import model.bean.User;
-import model.database.DBConnection;
+import model.database.DBContext;
 
 public class UserDAO {
-	public User loginUser(String username, String password) {
-		String sql = "select * from users where username=? and password=?";
-		try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+	public User loginUser(String email, String password) {
 
-			ps.setString(1, username);
-			ps.setString(2, password);
+	    String sql = "SELECT * FROM [User] WHERE email = ?";
 
-			ResultSet result = ps.executeQuery();
+	    try (Connection conn = DBContext.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
 
-			if (result.next()) {
-				User user = new User();
-				user.setId(result.getInt("id"));
-				user.setUsername(result.getString("username"));
-				user.setPassword(result.getString("password"));
-				user.setEmail(result.getString("email"));
-				user.setName(result.getString("name"));
-				return user;
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		return null;
+	        ps.setString(1, email);
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            String hashedPassword = rs.getString("password");
+
+	            // So sánh BCrypt
+	            if (BCrypt.checkpw(password, hashedPassword)) {
+	                User user = new User();
+	                user.setId(rs.getInt("id"));
+	                user.setUserName(rs.getString("username"));
+	                user.setEmail(rs.getString("email"));
+	                user.setRole(rs.getString("role"));
+	                
+	                return user;
+	            }
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
 
 	public boolean registerUser(User user) {
-		String sql = "Insert into users(username,password,email,role)";
-		try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-			ps.setString(1, user.getUsername());
-			ps.setString(2, user.getPassword());
-			ps.setString(2, user.getEmail());
-			ps.setString(2, user.getName());
+	    String sql = "INSERT INTO [User] (username, password, email, role) VALUES (?, ?, ?, ?)";
 
-			int result = ps.executeUpdate();
-			return result > 0;
+	    try (
+	        Connection conn = DBContext.getConnection();
+	        PreparedStatement ps = conn.prepareStatement(sql)
+	    ) {
+	        ps.setString(1, user.getUserName());
+	        ps.setString(2, user.getPassword()); 
+	        ps.setString(3, user.getEmail());
+	        ps.setString(4, user.getRole());
 
-		}
+	        int result = ps.executeUpdate();
+	        return result > 0;
 
-		catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			return false;
-
-		}
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
+
 }

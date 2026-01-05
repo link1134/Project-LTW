@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,26 +26,44 @@
 	z-index: 1000;
 }
 
+/* Dành cho các link */
 .user_dropdown a {
 	padding: 10px 14px;
 	text-decoration: none;
 	color: #333;
 	font-size: 14px;
+	display: block; /* để padding hoạt động như link */
 }
 
+/* Hover cho link */
 .user_dropdown a:hover {
 	background: #f2f2f2;
 	border-radius: 8px;
 }
 
+/* Dành cho <hr> */
 .user_dropdown hr {
 	margin: 5px 0;
 	border: none;
 	border-top: 1px solid #ddd;
 }
 
-.user_dropdown .logout {
-	color: #d9534f !important;
+/* Dành cho nút đăng xuất */
+.user_dropdown .logout button {
+	padding: 10px 14px;
+	font-size: 14px;
+	color: #d9534f;
+	background: none;
+	border: none;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+	border-radius: 8px;
+}
+
+/* Hover cho nút */
+.user_dropdown .logout button:hover {
+	background: #f2f2f2;
 }
 
 /*Chỗ này của cái search*/
@@ -129,7 +148,7 @@
 
 			<!-- Center logo -->
 			<a class="main_logo"
-				href="${pageContext.request.contextPath}\home_page">
+				href="${pageContext.request.contextPath}/home_page">
 				<div class="nav-logo">
 					<img
 						src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
@@ -149,10 +168,19 @@
 					class="avatar" alt="User" id="userAvatar">
 
 					<div class="user_dropdown" id="userDropdown">
-						<a href="${pageContext.request.contextPath}\follow-page"> Danh
-							sách theo dõi</a> <a href="${pageContext.request.contextPath}\history-page"> Lịch sử đọc</a>
+						<a href="${pageContext.request.contextPath}/follow-page"> Danh
+							sách theo dõi</a> <a
+							href="${pageContext.request.contextPath}/history-page"> Lịch
+							sử đọc </a>
+						<c:if test="${sessionScope.user.role == 'ADMIN'}">
+							<a href="${pageContext.request.contextPath}/admin">Trang Admin</a>
+						</c:if>
 						<hr>
-						<a href="#" class="logout"> Đăng xuất</a>
+						<form action="${pageContext.request.contextPath}/logout"
+							method="post" class="logout">
+							<button type="submit" class="logout">Đăng xuất</button>
+						</form>
+
 					</div></li>
 
 			</ul>

@@ -43,34 +43,22 @@ public class AdminController extends HttpServlet {
             targetView = ADMIN_VIEW_PREFIX + "admin.jsp";
             break;
             
-        case "story-list":
-            request.setAttribute("adminTitle", "Danh Sách Truyện");
-            // Map tới admin_story_list.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_story_list.jsp";
-            break;
+//        case "story-list":
+//            request.setAttribute("adminTitle", "Danh Sách Truyện");
+//            // Map tới admin_story_list.jsp
+//            targetView = ADMIN_VIEW_PREFIX + "admin_story_list.jsp";
+//            break;
             
-        case "new-story":
-            request.setAttribute("adminTitle", "Đăng Truyện Mới");
-            // Map tới admin_new_story.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_new_story.jsp";
-            break;
+      
             
-        case "new-chapter":
-            request.setAttribute("adminTitle", "Đăng Chương Mới");
-            // Map tới admin_new_chapter.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_new_chapter.jsp";
-            break;
+       
             
-        case "genre-management":
-            request.setAttribute("adminTitle", "Quản lý Thể loại");
-            // Map tới admin_genre_management.jsp
-            targetView = ADMIN_VIEW_PREFIX + "admin_genre_management.jsp";
-            break;
+        
             
-        default:
-            // Nếu không khớp, trả về lỗi 404
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Chức năng Admin không tồn tại.");
-            return;
+//        default:
+//            // Nếu không khớp, trả về lỗi 404
+//            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Chức năng Admin không tồn tại.");
+//            return;
         }
         
         

@@ -1,3 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>${title}</title>
+<style>
 @charset "ISO-8859-1";
 
 * {
@@ -105,17 +115,19 @@ main {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
 }
-.card_container{
+
+.card_container {
 	max-width: 1280px;
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    gap: 1.5rem;
-    
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+	gap: 1.5rem;
 }
+
 .card {
 	padding: 0;
 	scroll-snap-align: start;
@@ -164,45 +176,48 @@ main {
 	-webkit-line-clamp: 1;
 	overflow: hidden;
 }
-.controller{
+
+.controller {
 	max-width: 1280px;
 	display: flex;
-	justify-content:center;
-	align-items:center;
+	justify-content: center;
+	align-items: center;
 	margin-top: 3rem;
 	margin-bottom: 3rem;
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 1.25rem;
 	line-height: 1.75rem;
-	gap:1rem;
-	
+	gap: 1rem;
 }
-.controller a{
-	white-space: nowrap;
-    border-radius: .5rem;
-    text-align: center;
-    font-size: .875rem;
-    line-height: 1.25rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-    transition-duration: .2s;
-    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    background: white;
-    color: black;
-    text-decoration: none;
-}
-.controller a,.disable-button{
-	cursor: default;
 
-    background-color: rgb(107 114 128);
-    color: rgb(78,85,99);
-    pointer-events: none;
+.controller a {
+	white-space: nowrap;
+	border-radius: .5rem;
+	text-align: center;
+	font-size: .875rem;
+	line-height: 1.25rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	transition-property: color, background-color, border-color,
+		text-decoration-color, fill, stroke, opacity, box-shadow, transform,
+		filter, backdrop-filter;
+	transition-duration: .2s;
+	transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+	padding-top: .5rem;
+	padding-bottom: .5rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	background: white;
+	color: black;
+	text-decoration: none;
+}
+
+.controller a, .disable-button {
+	cursor: default;
+	background-color: rgb(107, 114, 128);
+	color: rgb(78, 85, 99);
+	pointer-events: none;
 }
 /* --- Footer cuối trang --- */
 .footer {
@@ -253,3 +268,84 @@ main {
 .footer__link:hover {
 	text-decoration: underline;
 }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/335fe6f64f.js"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+	<jsp:include page="/WEB-INF/view/utility/header.jsp" />
+	<main>
+		<div class="container">${subTitle}</div>
+		<div class="card_container">
+			<div class="card-grid">
+				<div class="card">
+					<div class="card-wrapped">
+						<a href="${pageContext.request.contextPath}/story_page"> <img
+							src="${pageContext.request.contextPath}/IMAGE/thumnail.png"
+							alt="" class="card-img">
+						</a>
+					</div>
+					<div class="card-description">
+						<a href="${pageContext.request.contextPath}/story_page"
+							class="card-description-name">
+							<h3>Doraemon</h3>
+						</a>
+						<h5>
+							<a href="" class="card-description-chapter_time"> <span>C.6</span>
+								- <span>6 ngày trước</span>
+							</a>
+							</h4>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-wrapped">
+						<a href=""> <img
+							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
+							alt="" class="card-img">
+						</a>
+					</div>
+					<div class="card-description">
+						<a href="" class="card-description-name">
+							<h3>IDOLxIDOL STORY</h3>
+						</a>
+						<h5>
+							<a href="" class="card-description-chapter_time"> <span>C.1</span>
+								- <span>1 ngày trước</span>
+							</a>
+
+							</h4>
+					</div>
+				</div>
+			</div>
+			<div class="controller ">
+				<a href="#" class="disable-button"> <span>←Trang sau</span>
+				</a> <a href="#" class="disable-button"> <span>Trang trước →</span>
+				</a>
+			</div>
+		</div>
+
+	</main>
+	<footer class="footer">
+		<div class="footer__container">
+			<p class="footer__text footer__text--highlight">Contact for work,
+				copyright and more:</p>
+
+			<p class="footer__email">
+				<a href="mailto:ad.doctruyen@gmail.com" class="footer__email-link">ad.doctruyen@gmail.com</a>
+			</p>
+
+			<div class="footer__links">
+				<a href="#" class="footer__link">Điều khoản dịch vụ</a> <a href="#"
+					class="footer__link">Chính sách bảo mật</a>
+			</div>
+
+			<span class="footer__copy">© 2025 - doctruyen.net</span>
+		</div>
+	</footer>
+</body>
+</html>

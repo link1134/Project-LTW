@@ -104,6 +104,30 @@ body {
   position: static;
   z-index: 1000;
 }
+.toast-error {
+    position: fixed;
+    top: 20px;              /* 👈 hạ xuống */
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #e74c3c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    z-index: 9999;
+
+    opacity: 1;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* hiệu ứng mờ + trôi lên */
+.toast-error.fade-out {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+}
 
 /* MAIN */
 main {

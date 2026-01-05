@@ -13,13 +13,16 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class test_chapter_detail
  */
 @WebServlet("/history-page")
-public class test_history_page extends HttpServlet {
+public class HistoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    	String title = "History Page";
+    	String subTitle = "Lịch sử đọc";
+    	request.setAttribute("title", title);
+    	request.setAttribute("subTitle", subTitle);
         System.out.println(">>> test_chapter_detail servlet RUNNING");
-
-        RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/view/history_page/history_page.jsp");
+        
+        RequestDispatcher dispatcher =request.getRequestDispatcher("/WEB-INF/view/utility/record_and_tag.jsp");
         dispatcher.forward(request, response);
     }
 }
