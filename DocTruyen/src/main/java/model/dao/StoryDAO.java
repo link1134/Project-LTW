@@ -46,21 +46,45 @@ public class StoryDAO {
 	}
 
 	public List<Stories> getNewestStories() {
-		List<Stories> result = new ArrayList<>();
-		String sql = "select top 24 * from Stories order by last_update desc";
-		try (Connection conn = DBContext.getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
-			while (rs.next()) {
-				result.add(new Stories(rs.getInt("id"), rs.getString("title"), rs.getString("author"),
-						rs.getString("coverImageURL"), rs.getString("bigCoverImageUrl"), rs.getString("description"),
-						rs.getTimestamp("created_at").toLocalDateTime(),
-						rs.getTimestamp("last_update").toLocalDateTime(), rs.getInt("view_counnt")));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
+	    List<Stories> result = new ArrayList<>();
+	    
+	    // Sử dụng LEFT JOIN để lấy cả những truyện chưa có chapter
+	    // Group by ID của Stories để tính số lượng chapter tương ứng
+	    String sql = "SELECT s.*, COUNT(c.id) AS num_chapters " +
+	                 "FROM Stories s " +
+	                 "LEFT JOIN Chapter c ON s.id = c.story_id " +
+	                 "GROUP BY s.id, s.title, s.author, s.coverImageURL, s.bigCoverImageUrl, " +
+	                 "         s.description, s.created_at, s.last_update, s.view_counnt,s.status " +
+	                 "ORDER BY s.last_update DESC " +
+	                 "OFFSET 0 ROWS FETCH NEXT 24 ROWS ONLY"; 
+
+	    try (Connection conn = DBContext.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+	        
+	        while (rs.next()) {
+	            Stories story = new Stories();
+	            // Map các trường cơ bản
+	            story.setId(rs.getInt("id"));
+	            story.setTitle(rs.getString("title"));
+	            story.setAuthor(rs.getString("author"));
+	            story.setCoverImageURL(rs.getString("coverImageURL"));
+	            story.setBigCoverImageURL(rs.getString("bigCoverImageUrl"));
+	            story.setDescription(rs.getString("description"));
+	            story.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
+	            story.setLastUpdate(rs.getTimestamp("last_update").toLocalDateTime());
+	            story.setViewCount(rs.getInt("view_counnt"));
+	            
+	            // Lấy số lượng chapter từ cột ảo num_chapters
+	            story.setNumChapter(rs.getInt("num_chapters")); 
+	            
+	            result.add(story);
+	        }
+	    } catch (SQLException e) {
+	        
+	        e.printStackTrace(); 
+	    }
+	    return result;
 	}
 
 	public int insertStoryFull(Stories stories, String[] genreIDs) {
@@ -259,19 +283,61 @@ public class StoryDAO {
 
 	// lấy truyện theo thể loại
 	public List<Stories> getStoriesByGenre(String genreName) {
+	    List<Stories> result = new ArrayList<>();
+	    
+	    // SQL: JOIN 3 bảng để lọc theo thể loại, sau đó LEFT JOIN với Chapter để đếm số chương
+	    String sql = "SELECT s.*, COUNT(c.id) AS num_chapters " +
+	                 "FROM Stories s " +
+	                 "JOIN Story_Genre sg ON s.id = sg.story_id " +
+	                 "JOIN Genres g ON sg.genre_id = g.id " +
+	                 "LEFT JOIN Chapter c ON s.id = c.story_id " +
+	                 "WHERE g.name = ? " +
+	                 "GROUP BY s.id, s.title, s.author, s.coverImageURL, s.bigCoverImageUrl, " +
+	                 "         s.description, s.created_at, s.last_update, s.view_counnt,s.status " +
+	                 "ORDER BY s.last_update DESC";
+
+	    try (Connection conn = DBContext.getConnection(); 
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setString(1, genreName);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                
+	                Stories story = new Stories();
+	                story.setId(rs.getInt("id"));
+	                story.setTitle(rs.getString("title"));
+	                story.setAuthor(rs.getString("author"));
+	                story.setCoverImageURL(rs.getString("coverImageURL"));
+	                story.setBigCoverImageURL(rs.getString("bigCoverImageUrl"));
+	                story.setDescription(rs.getString("description"));
+	                story.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
+	                story.setLastUpdate(rs.getTimestamp("last_update").toLocalDateTime());
+	                story.setViewCount(rs.getInt("view_counnt"));
+	                
+	                
+	                story.setNumChapter(rs.getInt("num_chapters"));
+	                
+	                result.add(story);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return result;
+	}
+	//lấy 9 truyên mới load vào banner
+	public List<Stories> get9NewestStories() {
 		List<Stories> result = new ArrayList<>();
-		String sql = "SELECT s.* FROM Stories s JOIN Story_Genre sg ON s.id = sg.story_id JOIN Genres g ON sg.genre_id = g.id  WHERE g.name = ?  ORDER BY s.last_update DESC";
-
-		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-
-			ps.setString(1, genreName);
-			try (ResultSet rs = ps.executeQuery()) {
-				while (rs.next()) {
-					result.add(new Stories(rs.getInt("id"), rs.getString("title"), rs.getString("author"),
-							rs.getString("coverImageURL"), rs.getString("bigCoverImageUrl"),
-							rs.getString("description"), rs.getTimestamp("created_at").toLocalDateTime(),
-							rs.getTimestamp("last_update").toLocalDateTime(), rs.getInt("view_counnt")));
-				}
+		String sql = "select top 9 * from Stories order by last_update desc";
+		try (Connection conn = DBContext.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+			while (rs.next()) {
+				result.add(new Stories(rs.getInt("id"), rs.getString("title"), rs.getString("author"),
+						rs.getString("coverImageURL"), rs.getString("bigCoverImageUrl"), rs.getString("description"),
+						rs.getTimestamp("created_at").toLocalDateTime(),
+						rs.getTimestamp("last_update").toLocalDateTime(), rs.getInt("view_counnt")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
