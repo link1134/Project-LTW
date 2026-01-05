@@ -9,6 +9,8 @@ public  class Stories {
 	
 	private LocalDateTime createdAt,lastUpdate; 
 	private int viewCount;
+	private int numChapter;
+	
 	
 	/*Contructors*/
 	public Stories() {
@@ -27,6 +29,10 @@ public  class Stories {
 		this.lastUpdate = lastUpdate;
 		this.viewCount = viewCount;
 	}
+	public String getTimeAgo() {
+        // Gọi hàm format từ Utils để tự động tính toán
+        return TimeAgoUtils.format(this.lastUpdate);
+    }
 	
 	/*Getter và setter*/
 	public int getId() {
@@ -94,7 +100,8 @@ public  class Stories {
 	    return days + " ngày trước";
 	}
 	
-	
+	public int getNumChapter() { return numChapter; }
+    public void setNumChapter(int numChapter) { this.numChapter = numChapter; }
 	
 	
 }
