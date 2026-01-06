@@ -195,6 +195,31 @@ public class StoryDAO {
 		}
 		return list;
 	}
+	public List<Genres> getGenresByStoryId(int storyId) {
+	    List<Genres> list = new ArrayList<>();
+	    
+	    String sql = "SELECT g.id, g.name FROM Genres g " +
+	                 "JOIN Story_Genre sg ON g.id = sg.genre_id " +
+	                 "WHERE sg.story_id = ?";
+
+	    try (Connection conn = DBContext.getConnection(); 
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setInt(1, storyId);
+
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                Genres genre = new Genres();
+	                genre.setId(rs.getInt("id"));
+	                genre.setName(rs.getString("name")); // Lấy tên thể loại
+	                list.add(genre);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return list;
+	}
 
 	public boolean updateStoryFull(Stories stories, String[] genreIDs) {
 		Connection conn = null;
@@ -343,6 +368,40 @@ public class StoryDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	//lấy 8 truyện tương tự về thể loại
+	public List<Stories> getSimilarStories(int storyId) {
+	    List<Stories> list = new ArrayList<>();
+	    // SQL Server: SELECT TOP 8 ...
+	    // MySQL: SELECT ... LIMIT 8
+	    String sql = "SELECT DISTINCT TOP 8 s.* " +
+	                 "FROM Stories s " +
+	                 "JOIN Story_Genre sg ON s.id = sg.story_id " +
+	                 "WHERE sg.genre_id IN (SELECT genre_id FROM Story_Genre WHERE story_id = ?) " +
+	                 "AND s.id <> ? " + 
+	                 "ORDER BY s.last_update DESC";
+
+	    try (Connection conn = DBContext.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+	        
+	        ps.setInt(1, storyId);
+	        ps.setInt(2, storyId);
+	        
+	        try (ResultSet rs = ps.executeQuery()) {
+	            while (rs.next()) {
+	                Stories s = new Stories();
+	                s.setId(rs.getInt("id"));
+	                s.setTitle(rs.getString("title"));
+	                s.setCoverImageURL(rs.getString("coverImageURL"));
+	                s.setLastUpdate(rs.getTimestamp("last_update").toLocalDateTime());
+	                s.setViewCount(rs.getInt("view_counnt"));
+	                list.add(s);
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return list;
 	}
 
 	public static void main(String[] args) {
