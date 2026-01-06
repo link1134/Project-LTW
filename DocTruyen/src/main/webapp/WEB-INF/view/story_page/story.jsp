@@ -6,214 +6,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/static/css/story_page/style.css">
+
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/static/css/reset.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/css/story_page/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	rel="stylesheet">
-<script src="https://kit.fontawesome.com/335fe6f64f.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/335fe6f64f.js"
+	crossorigin="anonymous"></script>
 <title>Tittle</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/utility/header.jsp"/>
-	<main>
-		<div class="content">
-			<div class="header_content">
-				<div class="Cover_Image">
-					<img src="${pageContext.request.contextPath }/IMAGE/cover_img.png"
-						alt="ảnh bìa truyện">
+	<jsp:include page="/WEB-INF/view/utility/header.jsp" />
+	<main class="story-container">
+		<div class="story-content">
+			<div class="story-header-banner">
+				<div class="banner-overlay">
+					<img
+						src="${pageContext.request.contextPath}/${story.bigCoverImageURL}"
+						alt="<c:out value='${story.title}'/>" class="banner-img">
 				</div>
-
-
-
 			</div>
-			<div class="body_content_1">
-				<div class="main_info">
-					<img class="story_thumbnail"
-						src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-						alt="Ảnh đại diện">
-					<div class="text_">
-						<h1 class="story_name">DORAEMON</h1>
-						<h1 class="author_name">Fujiko Fujio</h1>
-						<h1 class="publish_time">6 giờ trước</h1>
-					</div>
 
+			<div class="story-info-block">
+				<div class="story-info-left">
+					<img class="story-thumbnail"
+						src="${pageContext.request.contextPath}/${story.coverImageURL}"
+						alt="<c:out value='${story.title}'/>">
 				</div>
 
-				<div class="list_button">
-					<nav class="category_nav">
-						<a href="">Thiếu nhi</a> <a href="">Vui tươi</a>
-
-					</nav>
-				</div>
-				<div class="action_buttons">
-					<div class="follow_button">
-						<a>Theo dõi </a>
+				<div class="story-info-right">
+					<div class="story-title-group">
+						<h1 class="story-name">
+							<c:out value="${story.title}" />
+						</h1>
+						<p class="story-author">
+							Tác giả:
+							<c:out value="${story.author}" />
+						</p>
+						<p class="story-update-time">
+							Cập nhật:
+							<c:out value="${story.timeAgo}" />
+						</p>
 					</div>
-					<div class="read_from_chapter1_button">
-						<a>Đọc từ chương 1</a>
+
+					<div class="story-genres">
+						<c:forEach var="genre" items="${storyGenres}">
+							<a href="${pageContext.request.contextPath}/genre?id=${genre.id}"
+								class="genre-tag"> <c:out value="${genre.name}" />
+							</a>
+						</c:forEach>
 					</div>
-				</div>
 
-
-			</div>
-			<div class="body_content_2">
-				<div class="left_column">
-					<div class="description">
-						<p>Tập hợp các truyện ngắn không được xuất bản trong 45 tập
-							gốc của Doraemon.</p>
-
-					</div>
-				</div>
-				<div class="right_column_stats">
-					<div class="statistics">
-						<div class="chapter_number">6 chương</div>
-						<div class="view">2000 lượt xem</div>
+					<div class="story-actions">
+						<a href="#" class="btn btn-follow"><i
+							class="fa-solid fa-heart"></i> Theo dõi</a> <a href="#"
+							class="btn btn-read-first">Đọc từ chương 1</a>
 					</div>
 				</div>
 			</div>
 
-			<div class="body_content_3">
-				<h1>Danh sách chương</h1>
-				<div class="list_chapter">
-					<ul class="list_chapter">
-						<li class="chapter_items"><a
-							href="${pageContext.request.contextPath}/chapter-detail"
-							class="chapter_link">
-								<h4>Chương 1</h4>
-								<h5>Hành tinh GARAPA</h5>
-								<H6>6 giờ trước</H6>
-								<H6>lượt xem</H6>
-								<H6>bình luận</H6>
-						</a></li>
-						<li class="chapter_items"><a
-							href="${pageContext.request.contextPath}/chapter-detail"
-							class="chapter_link">
-								<h4>Chương 2</h4>
-								<h5>Hành tinh GARAPA</h5>
-								<H6>6 giờ trước</H6>
-								<H6>lượt xem</H6>
-								<H6>bình luận</H6>
-						</a></li>
-						<li class="chapter_items"><a
-							href="${pageContext.request.contextPath}/chapter-detail"
-							class="chapter_link">
-								<h4>Chương 3</h4>
-								<h5>Hành tinh GARAPA</h5>
-								<H6>6 giờ trước</H6>
-								<H6>lượt xem</H6>
-								<H6>bình luận</H6>
-						</a></li>
-						<li class="chapter_items"><a
-							href="${pageContext.request.contextPath}/chapter-detail"
-							class="chapter_link">
-								<h4>Chương 4</h4>
-								<h5>Hành tinh GARAPA</h5>
-								<H6>6 giờ trước</H6>
-								<H6>lượt xem</H6>
-								<H6>bình luận</H6>
-						</a></li>
-						<li class="chapter_items"><a
-							href="${pageContext.request.contextPath}/chapter-detail"
-							class="chapter_link">
-								<h4>Chương 5</h4>
-								<h5>Hành tinh GARAPA</h5>
-								<H6>6 giờ trước</H6>
-								<H6>lượt xem</H6>
-								<H6>bình luận</H6>
-						</a></li>
-						<li class="chapter_items"><a
-							href="${pageContext.request.contextPath}/chapter-detail"
-							class="chapter_link">
-								<h4>Chương 6</h4>
-								<h5>Hành tinh GARAPA</h5>
-								<H6>6 giờ trước</H6>
-								<H6>lượt xem</H6>
-								<H6>bình luận</H6>
-						</a></li>
-					</ul>
+			<div class="story-details-grid">
+				<div class="details-left">
+					<div class="section-card">
+						<h3 class="section-title">Nội dung truyện</h3>
+						<div class="story-description">
+							<p>
+								<c:out value="${story.description}" />
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="details-right">
+					<div class="section-card stats-card">
+						<div class="stat-item">
+							<span class="stat-label">Số chương:</span> <span
+								class="stat-value"><c:out value="${story.numChapter}" /></span>
+						</div>
+						<div class="stat-item">
+							<span class="stat-label">Lượt xem:</span> <span
+								class="stat-value"><c:out value="${story.viewCount}" /></span>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="footer_content">
-				<div class="similar_story">
-					<h1>Truyện tương tự</h1>
-					<ul class="list_stroy">
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>số chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>số chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>6 chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>6 chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>số chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>số chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>số chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
-						<li class="stroy_items"><a href="/HTML/stroy.html"
-							class="story_link"> <img
-								src="${pageContext.request.contextPath }/IMAGE/thumnail.png"
-								alt="ảnh truyện">
-								<h4>DORAEMON</h4>
-								<h5>số chương</h5>
-								<h5>6 giờ trước</h5>
-						</a></li>
+
+			<div class="section-card chapter-section">
+				<h3 class="section-title">Danh sách chương</h3>
+				<div class="chapter-list-wrapper">
+					<ul class="chapter-list">
+						<c:forEach var="chap" items="${chapters}">
+							<li class="chapter-item"><a
+								href="read-chapter?id=${chap.id}" class="chapter-link"> <span
+									class="chap-number">Chương <c:out
+											value="${chap.displayNumChapter}" /></span> <span class="chap-title"><c:out
+											value="${chap.title}" /></span> <span class="chap-time"><c:out
+											value="${chap.timeAgo}" /></span>
+							</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
 
-
+			<div class="section-card similar-section">
+				<h3 class="section-title">Truyện tương tự</h3>
+				<div class="similar-grid">
+					<c:forEach var="sim" items="${similarStories}">
+						<div class="similar-card">
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${sim.id}">
+								<div class="similar-thumb">
+									<img
+										src="${pageContext.request.contextPath}/${sim.coverImageURL}"
+										alt="${sim.title}">
+								</div>
+								<div class="similar-info">
+									<h4 class="similar-name">
+										<c:out value="${sim.title}" />
+									</h4>
+									<div class="similar-meta">
+										<span>C.${sim.numChapter}</span> <span>${sim.timeAgo}</span>
+									</div>
+								</div>
+							</a>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
 		</div>
-
-
 	</main>
 	<footer class="footer">
 		<div class="footer__container">
