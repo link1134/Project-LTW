@@ -8,6 +8,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
 <title>Admin Dashboard | Quản lý Thể loại</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/static/css/reset.css">

@@ -17,6 +17,7 @@
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/335fe6f64f.js"
 	crossorigin="anonymous"></script>
+<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
 <title>Admin | Quản lý danh sách trang</title>
 
 </head>
