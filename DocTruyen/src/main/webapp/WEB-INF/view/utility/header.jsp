@@ -168,7 +168,7 @@
 					class="avatar" alt="User" id="userAvatar">
 
 					<div class="user_dropdown" id="userDropdown">
-						<a href="${pageContext.request.contextPath}/follow-page"> Danh
+						<a href="${pageContext.request.contextPath}/follow-story"> Danh
 							sách theo dõi</a> <a
 							href="${pageContext.request.contextPath}/history-page"> Lịch
 							sử đọc </a>

@@ -63,9 +63,24 @@
 					</div>
 
 					<div class="story-actions">
-						<a href="#" class="btn btn-follow"><i
-							class="fa-solid fa-heart"></i> Theo dõi</a> <a href="#"
-							class="btn btn-read-first">Đọc từ chương 1</a>
+						<c:if test="${not empty sessionScope.user}">
+							<form action="${pageContext.request.contextPath}/follow-story"
+								method="post">
+								<input type="hidden" name="storyId" value="${story.id}">
+								<button type="submit" class="btn btn-follow">
+									<i class="fa-solid fa-heart"></i>
+									<c:choose>
+										<c:when test="${isFollowed}">
+                    Đã theo dõi
+                </c:when>
+										<c:otherwise>
+                    Theo dõi
+                </c:otherwise>
+									</c:choose>
+								</button>
+							</form>
+						</c:if>
+						<a href="#" class="btn btn-read-first">Đọc từ chương 1</a>
 					</div>
 				</div>
 			</div>
@@ -104,9 +119,9 @@
 							<li class="chapter-item"><a
 								href="read-chapter?id=${chap.id}" class="chapter-link"> <span
 									class="chap-number">Chương <c:out
-											value="${chap.displayNumChapter}" /></span> <span class="chap-title"><c:out
-											value="${chap.title}" /></span> <span class="chap-time"><c:out
-											value="${chap.timeAgo}" /></span>
+											value="${chap.displayNumChapter}" /></span> <span
+									class="chap-title"><c:out value="${chap.title}" /></span> <span
+									class="chap-time"><c:out value="${chap.timeAgo}" /></span>
 							</a></li>
 						</c:forEach>
 					</ul>

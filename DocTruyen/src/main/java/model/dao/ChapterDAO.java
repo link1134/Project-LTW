@@ -161,9 +161,39 @@ public class ChapterDAO {
 		return false;
 	}
 
-	public void updateChapterNumber(int parseInt, int parseInt2) {
-		// TODO Auto-generated method stub
-		
+	public Chapter getLatestPublishedChapter(int storyId) {
+	    String sql = """
+	        SELECT TOP 1 *
+	        FROM Chapter
+	        WHERE story_id = ?
+	          
+	        ORDER BY published_at DESC
+	    """;
+
+	    try (Connection conn = DBContext.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+	        ps.setInt(1, storyId);
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            Chapter c = new Chapter();
+	            c.setId(rs.getInt("id"));
+	            c.setStoryID(rs.getInt("story_id"));
+	            c.setDisplayNumChapter(rs.getString("display_num_chapter"));
+
+	            Timestamp ts = rs.getTimestamp("published_at");
+	            if (ts != null) {
+	                c.setPublishedAt(ts.toLocalDateTime());
+	            }
+	            return c;
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
 
+	
 }
