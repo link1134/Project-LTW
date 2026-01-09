@@ -194,6 +194,26 @@ public class ChapterDAO {
 	    }
 	    return null;
 	}
-
+	//lấy chapter theo ID 
+	public Chapter getChapterById(int id) {
+	    String sql = "SELECT * FROM Chapter WHERE id = ?";
+	    try (Connection conn = DBContext.getConnection(); 
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+	        ps.setInt(1, id);
+	        ResultSet rs = ps.executeQuery();
+	        if (rs.next()) {
+	            Chapter c = new Chapter();
+	            c.setId(rs.getInt("id"));
+	            c.setStoryID(rs.getInt("story_id"));
+	            c.setDisplayNumChapter(rs.getString("display_num_chapter"));
+	            c.setChapterNumber(rs.getInt("chapter_number"));
+	            c.setTitle(rs.getString("title"));
+	            return c;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return null;
+	}
 	
 }
