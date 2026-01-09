@@ -87,21 +87,38 @@ public class ChapterDAO {
 	}
 
 	public boolean insertChapter(Chapter c) {
-		String sql = """
-				    INSERT INTO Chapter
-				    (story_id, display_num_chapter, chapter_number, title)
-				    VALUES (?, ?, ?, ?)
-				""";
+		String sqlInsert = "INSERT INTO Chapter (story_id, display_num_chapter, chapter_number, title) VALUES (?, ?, ?, ?)";
+		// Câu lệnh cập nhật thời gian mới nhất cho truyện
+		String sqlUpdateStory = "UPDATE Stories SET last_update = CURRENT_TIMESTAMP WHERE id = ?";
 
-		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+		try (Connection conn = DBContext.getConnection()) {
+			conn.setAutoCommit(false); // (Transaction)
 
-			ps.setInt(1, c.getStoryID());
-			ps.setString(2, c.getDisplayNumChapter());
-			ps.setInt(3, c.getChapterNumber());
-			ps.setString(4, c.getTitle());
+			try (PreparedStatement psInsert = conn.prepareStatement(sqlInsert);
+					PreparedStatement psUpdate = conn.prepareStatement(sqlUpdateStory)) {
 
-			return ps.executeUpdate() > 0;
+				// 1. Thực hiện chèn Chapter mới
+				psInsert.setInt(1, c.getStoryID());
+				psInsert.setString(2, c.getDisplayNumChapter());
+				psInsert.setInt(3, c.getChapterNumber());
+				psInsert.setString(4, c.getTitle());
+				int rowInserted = psInsert.executeUpdate();
 
+				// 2. Thực hiện cập nhật cột last_update trong bảng Stories
+				psUpdate.setInt(1, c.getStoryID());
+				int rowUpdated = psUpdate.executeUpdate();
+
+				// Nếu cả hai đều thành công
+				if (rowInserted > 0 && rowUpdated > 0) {
+					conn.commit();
+					return true;
+				} else {
+					conn.rollback();
+				}
+			} catch (SQLException e) {
+				conn.rollback();
+				e.printStackTrace();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -162,58 +179,57 @@ public class ChapterDAO {
 	}
 
 	public Chapter getLatestPublishedChapter(int storyId) {
-	    String sql = """
-	        SELECT TOP 1 *
-	        FROM Chapter
-	        WHERE story_id = ?
-	          
-	        ORDER BY published_at DESC
-	    """;
+		String sql = """
+				    SELECT TOP 1 *
+				    FROM Chapter
+				    WHERE story_id = ?
 
-	    try (Connection conn = DBContext.getConnection();
-	         PreparedStatement ps = conn.prepareStatement(sql)) {
+				    ORDER BY published_at DESC
+				""";
 
-	        ps.setInt(1, storyId);
-	        ResultSet rs = ps.executeQuery();
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-	        if (rs.next()) {
-	            Chapter c = new Chapter();
-	            c.setId(rs.getInt("id"));
-	            c.setStoryID(rs.getInt("story_id"));
-	            c.setDisplayNumChapter(rs.getString("display_num_chapter"));
+			ps.setInt(1, storyId);
+			ResultSet rs = ps.executeQuery();
 
-	            Timestamp ts = rs.getTimestamp("published_at");
-	            if (ts != null) {
-	                c.setPublishedAt(ts.toLocalDateTime());
-	            }
-	            return c;
-	        }
+			if (rs.next()) {
+				Chapter c = new Chapter();
+				c.setId(rs.getInt("id"));
+				c.setStoryID(rs.getInt("story_id"));
+				c.setDisplayNumChapter(rs.getString("display_num_chapter"));
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return null;
+				Timestamp ts = rs.getTimestamp("published_at");
+				if (ts != null) {
+					c.setPublishedAt(ts.toLocalDateTime());
+				}
+				return c;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
-	//lấy chapter theo ID 
+
+	// lấy chapter theo ID
 	public Chapter getChapterById(int id) {
-	    String sql = "SELECT * FROM Chapter WHERE id = ?";
-	    try (Connection conn = DBContext.getConnection(); 
-	         PreparedStatement ps = conn.prepareStatement(sql)) {
-	        ps.setInt(1, id);
-	        ResultSet rs = ps.executeQuery();
-	        if (rs.next()) {
-	            Chapter c = new Chapter();
-	            c.setId(rs.getInt("id"));
-	            c.setStoryID(rs.getInt("story_id"));
-	            c.setDisplayNumChapter(rs.getString("display_num_chapter"));
-	            c.setChapterNumber(rs.getInt("chapter_number"));
-	            c.setTitle(rs.getString("title"));
-	            return c;
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-	    return null;
+		String sql = "SELECT * FROM Chapter WHERE id = ?";
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				Chapter c = new Chapter();
+				c.setId(rs.getInt("id"));
+				c.setStoryID(rs.getInt("story_id"));
+				c.setDisplayNumChapter(rs.getString("display_num_chapter"));
+				c.setChapterNumber(rs.getInt("chapter_number"));
+				c.setTitle(rs.getString("title"));
+				return c;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
-	
+
 }

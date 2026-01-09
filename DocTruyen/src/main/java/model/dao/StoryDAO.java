@@ -48,14 +48,13 @@ public class StoryDAO {
 	public List<Stories> getNewestStories() {
 	    List<Stories> result = new ArrayList<>();
 	    
-	    // Sử dụng LEFT JOIN để lấy cả những truyện chưa có chapter
-	    // Group by ID của Stories để tính số lượng chapter tương ứng
+	    
 	    String sql = "SELECT s.*, COUNT(c.id) AS num_chapters " +
 	                 "FROM Stories s " +
 	                 "LEFT JOIN Chapter c ON s.id = c.story_id " +
 	                 "GROUP BY s.id, s.title, s.author, s.coverImageURL, s.bigCoverImageUrl, " +
-	                 "         s.description, s.created_at, s.last_update, s.view_counnt,s.status " +
-	                 "ORDER BY s.last_update DESC " +
+	                 "         s.description, s.created_at, s.last_update, s.view_counnt, s.status " +
+	                 "ORDER BY s.last_update DESC " + // Sắp xếp theo last_update đã được trigger từ Chapter
 	                 "OFFSET 0 ROWS FETCH NEXT 24 ROWS ONLY"; 
 
 	    try (Connection conn = DBContext.getConnection();
@@ -64,24 +63,32 @@ public class StoryDAO {
 	        
 	        while (rs.next()) {
 	            Stories story = new Stories();
-	            // Map các trường cơ bản
 	            story.setId(rs.getInt("id"));
 	            story.setTitle(rs.getString("title"));
 	            story.setAuthor(rs.getString("author"));
 	            story.setCoverImageURL(rs.getString("coverImageURL"));
 	            story.setBigCoverImageURL(rs.getString("bigCoverImageUrl"));
 	            story.setDescription(rs.getString("description"));
-	            story.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
-	            story.setLastUpdate(rs.getTimestamp("last_update").toLocalDateTime());
 	            story.setViewCount(rs.getInt("view_counnt"));
-	            
-	            // Lấy số lượng chapter từ cột ảo num_chapters
 	            story.setNumChapter(rs.getInt("num_chapters")); 
+	            
+	            //  Kiểm tra null an toàn cho LocalDateTime
+	            Timestamp createdAtTs = rs.getTimestamp("created_at");
+	            if (createdAtTs != null) {
+	                story.setCreatedAt(createdAtTs.toLocalDateTime());
+	            }
+
+	            Timestamp lastUpdateTs = rs.getTimestamp("last_update");
+	            if (lastUpdateTs != null) {
+	                story.setLastUpdate(lastUpdateTs.toLocalDateTime());
+	            } else if (createdAtTs != null) {
+	                // Nếu chưa bao giờ có chapter, mặc định dùng ngày tạo truyện
+	                story.setLastUpdate(createdAtTs.toLocalDateTime());
+	            }
 	            
 	            result.add(story);
 	        }
 	    } catch (SQLException e) {
-	        
 	        e.printStackTrace(); 
 	    }
 	    return result;
