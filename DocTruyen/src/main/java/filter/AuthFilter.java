@@ -42,7 +42,7 @@ public class AuthFilter implements Filter {
 	        chain.doFilter(request, response);
 	        return;
 	    }
-		if (path.startsWith("/login") || path.startsWith("/register")) {
+		if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/forgot-password")) {
 			chain.doFilter(request, response);
 			return;
 		}
