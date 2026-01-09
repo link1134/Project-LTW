@@ -148,7 +148,7 @@
 
 			<!-- Center logo -->
 			<a class="main_logo"
-				href="${pageContext.request.contextPath}/home_page">
+				href="${pageContext.request.contextPath}/home-page">
 				<div class="nav-logo">
 					<img
 						src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"

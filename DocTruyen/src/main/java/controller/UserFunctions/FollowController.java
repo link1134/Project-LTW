@@ -63,10 +63,7 @@ public class FollowController extends HttpServlet {
 
       
         User user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
-            response.sendRedirect(request.getContextPath() + "/login");
-            return;
-        }
+        
 
         int userId = user.getId();
         int storyId = Integer.parseInt(request.getParameter("storyId"));

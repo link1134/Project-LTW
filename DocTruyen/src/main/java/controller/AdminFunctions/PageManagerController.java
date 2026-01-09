@@ -73,7 +73,7 @@ public class PageManagerController extends HttpServlet {
 		int storyId = Integer.parseInt(request.getParameter("storyId"));
 		String displayNum = request.getParameter("displayNum");
 
-		String baseUploadPath = "D:/WorkSpace/JAVA/DocTruyen" + "/src/main/webapp/static/uploads/";
+		String baseUploadPath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen" + "/src/main/webapp/static/uploads/";
 
 		String uploadPath = "static/uploads/" + storyId + "/" + displayNum + "/";
 		String realPath = baseUploadPath + storyId + "/" + displayNum + "/";

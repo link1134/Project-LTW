@@ -313,14 +313,17 @@ main {
 }
 
 .chapter_box_content {
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding:1rem;
 	overflow-y: auto;
 	flex-grow: 1;
 }
-
+.chapter_box_grid a.active {
+    background: rgb(37 99 235);
+    color: #fff;
+    pointer-events: none;
+}
 .chapter_box_grid {
-	gap: .25rem;
+	gap: .35rem;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	display: grid
 }

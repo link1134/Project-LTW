@@ -17,29 +17,70 @@
 	rel="stylesheet">
 <script src="https://kit.fontawesome.com/335fe6f64f.js"
 	crossorigin="anonymous"></script>
-<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
-<title>Chapter</title>
+<link rel="icon"
+	href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
+	type="image/png">
+<title>Chapter ${currentChapter.displayNumChapter}</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/utility/header.jsp" />
 	<main>
 		<div class="story-interaction">
 			<button class="comment-button">
-				<span>0</span> <span><i class="fa-solid fa-message"></i> </span>
+				<span>0</span> <span><i class="fa-solid fa-message"></i></span>
 			</button>
+
 			<div class="content-select-controller">
-				<button class="previous-chapter-button">
-					<i class="fa-solid fa-chevron-left"></i>
-				</button>
+
+
+				<c:choose>
+					<c:when test="${prevChapter == null}">
+						<button class="previous-chapter-button"
+							style="opacity: 0.4; pointer-events: none; cursor: default;">
+							<i class="fa-solid fa-chevron-left"></i>
+						</button>
+					</c:when>
+					<c:otherwise>
+						<a
+							href="${pageContext.request.contextPath}/read-chapter?id=${prevChapter.id}">
+							<button class="previous-chapter-button">
+								<i class="fa-solid fa-chevron-left"></i>
+							</button>
+						</a>
+					</c:otherwise>
+				</c:choose>
+
+
 				<button class="chapter-select">
-					<span>Chương ?</span>
+					<span>Chương ${currentChapter.displayNumChapter}</span>
+
 				</button>
-				<button class="next-chapter-button">
-					<span>Tiếp</span> <span><i class="fa-solid fa-chevron-right"></i></span>
-				</button>
+
+
+				<c:choose>
+					<c:when test="${nextChapter == null}">
+						<button class="next-chapter-button"
+							style="opacity: 0.4; pointer-events: none; cursor: default;">
+							<span>Tiếp</span> <span><i
+								class="fa-solid fa-chevron-right"></i></span>
+						</button>
+					</c:when>
+					<c:otherwise>
+						<a
+							href="${pageContext.request.contextPath}/read-chapter?id=${nextChapter.id}">
+							<button class="next-chapter-button">
+								<span>Tiếp</span> <span><i
+									class="fa-solid fa-chevron-right"></i></span>
+							</button>
+						</a>
+					</c:otherwise>
+				</c:choose>
+
 			</div>
+
 			<button class="up-button">
-				<i class="fa-solid fa-chevron-up"></i>
+				<a href="#navbar"><i class="fa-solid fa-chevron-up"></i></a>
+
 			</button>
 		</div>
 		<div class="comment_overlay" id="commentOverlay">
@@ -92,17 +133,16 @@
 				</div>
 				<div class="chapter_box_content">
 					<div class="chapter_box_grid">
-						<a> Chương
-							<div>1</div>
-						</a> <a> Chương
-							<div>2</div>
-						</a> <a> Chương
-							<div>3</div>
-						</a> </a> <a> Chương
-							<div>4</div>
-						</a> </a> <a> Chương
-							<div>5</div>
-						</a>
+
+						<c:forEach var="chap" items="${allChapters}">
+							<a
+								href="${pageContext.request.contextPath}/read-chapter?id=${chap.id}"
+								class="${chap.id == currentChapter.id ? 'active' : ''}">
+								Chương
+								<div>${chap.displayNumChapter}</div>
+							</a>
+						</c:forEach>
+
 					</div>
 				</div>
 
@@ -115,111 +155,101 @@
 		</div>
 		<div class="content">
 			<div class="story_name_carrier">
-				<a href="${pageContext.request.contextPath}/story_page"
-					class="story_name"> <span>← DORAEMON</span>
+				<a
+					href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+					class="story_name"> <span>← ${story.title}</span>
 				</a>
 			</div>
 			<h1 class="story_chapter_name">
-				<span></span> <span>Hành tinh GARAPA</span>
+				<span> Chương ${currentChapter.displayNumChapter} <c:if
+						test="${haveTitle}">
+            : ${currentChapter.title}
+        </c:if>
+				</span>
 			</h1>
 			<div class="chapter_controls">
+				<!-- Chương trước -->
 				<div>
-					<a href="">chương sau</a>
+					<c:choose>
+						<c:when test="${prevChapter == null}">
+							<a style="opacity: 0.4; pointer-events: none; cursor: default;">
+								chương trước </a>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${pageContext.request.contextPath}/read-chapter?id=${prevChapter.id}">
+								chương trước </a>
+						</c:otherwise>
+					</c:choose>
 				</div>
+
+				<!-- Chương sau -->
 				<div>
-					<a href="">chương trước</a>
+					<c:choose>
+						<c:when test="${nextChapter == null}">
+							<a style="opacity: 0.4; pointer-events: none; cursor: default;">
+								chương sau </a>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${pageContext.request.contextPath}/read-chapter?id=${nextChapter.id}">
+								chương sau </a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
+
 		</div>
 		<div class="story_content">
 			<ul class="list_img">
-				<li><img src="${pageContext.request.contextPath }/IMAGE/0.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/1.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/2.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/3.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/4.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/5.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/6.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/7.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/8.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/9.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/10.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/11.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/12.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/13.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/14.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/15.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/16.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/17.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/18.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/19.png"
-					alt="0"></li>
-				<li><img src="${pageContext.request.contextPath }/IMAGE/20.png"
-					alt="0"></li>
-
-				<li><img src="/IMAGE/21.png" alt="0"></li>
-				<li><img src="/IMAGE/22.png" alt="0"></li>
-				<li><img src="/IMAGE/23.png" alt="0"></li>
-				<li><img src="/IMAGE/24.png" alt="0"></li>
-				<li><img src="/IMAGE/25.png" alt="0"></li>
-				<li><img src="/IMAGE/26.png" alt="0"></li>
-				<li><img src="/IMAGE/27.png" alt="0"></li>
-				<li><img src="/IMAGE/28.png" alt="0"></li>
-				<li><img src="/IMAGE/29.png" alt="0"></li>
-				<li><img src="/IMAGE/30.png" alt="0"></li>
-				<li><img src="/IMAGE/31.png" alt="0"></li>
-				<li><img src="/IMAGE/32.png" alt="0"></li>
-				<li><img src="/IMAGE/33.png" alt="0"></li>
-				<li><img src="/IMAGE/34.png" alt="0"></li>
-				<li><img src="/IMAGE/35.png" alt="0"></li>
-				<li><img src="/IMAGE/36.png" alt="0"></li>
-				<li><img src="/IMAGE/37.png" alt="0"></li>
-				<li><img src="/IMAGE/38.png" alt="0"></li>
-				<li><img src="/IMAGE/39.png" alt="0"></li>
-				<li><img src="/IMAGE/40.png" alt="0"></li>
-				<li><img src="/IMAGE/41.png" alt="0"></li>
-				<li><img src="/IMAGE/42.png" alt="0"></li>
-				<li><img src="/IMAGE/43.png" alt="0"></li>
-				<li><img src="/IMAGE/44.png" alt="0"></li>
-				<li><img src="/IMAGE/45.png" alt="0"></li>
-				<li><img src="/IMAGE/46.png" alt="0"></li>
-				<li><img src="/IMAGE/47.png" alt="0"></li>
-				<li><img src="/IMAGE/48.png" alt="0"></li>
-				<li><img src="/IMAGE/49.png" alt="0"></li>
-				<li><img src="/IMAGE/50.png" alt="0"></li>
+				<c:forEach var="page" items="${pages}">
+					<li><img
+						src="${pageContext.request.contextPath}/${page.pageURL}"
+						alt="page ${page.id}"></li>
+				</c:forEach>
 			</ul>
 		</div>
+
 		<div class="chapter_end_controller_one">
-			<a href="">
-				<div>xem tiếp chương 2</div>
-				<div>tiêu đề chương 2</div>
-			</a>
+			<c:choose>
+				<c:when test="${nextChapter == null}">
+					<a style="opacity: 0.4; pointer-events: none; cursor: default;">
+						<div>Chương mới nhất</div>
+					</a>
+				</c:when>
+
+				<c:otherwise>
+					<a
+						href="${pageContext.request.contextPath}/read-chapter?id=${nextChapter.id}">
+						<div>Xem tiếp chương ${nextChapter.displayNumChapter}</div> <c:if
+							test="${nextChapterHaveTitle}">
+							<div>${nextChapter.title}</div>
+						</c:if>
+					</a>
+				</c:otherwise>
+			</c:choose>
 		</div>
+
+
 		<div class="chapter_end_controller_two">
 			<div>
-				<a href=""> Chương trước </a>
-				<button onclick="location.href='#navbar_mainPage'">lên đầu</button>
+				<c:choose>
+					<c:when test="${prevChapter == null}">
+						<a style="opacity: 0.4; pointer-events: none; cursor: default;">
+							Chương cũ nhất </a>
+					</c:when>
+
+					<c:otherwise>
+						<a
+							href="${pageContext.request.contextPath}/read-chapter?id=${prevChapter.id}">
+							Chương trước </a>
+					</c:otherwise>
+				</c:choose>
+
+				<button onclick="location.href='#navbar'">lên đầu</button>
 			</div>
 		</div>
+
 
 	</main>
 	<footer class="footer" id="footer">

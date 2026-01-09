@@ -1,6 +1,7 @@
 package controller.Navigation;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,11 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import model.bean.Chapter;
 import model.bean.Page;
 import model.bean.Stories;
+import model.bean.User;
 import model.dao.ChapterDAO;
+import model.dao.HistoryDAO;
 import model.dao.PageDAO;
 import model.dao.StoryDAO;
 
@@ -25,7 +29,7 @@ public class ChapterDetailPageController extends HttpServlet {
 	private ChapterDAO chapterDAO;
 	private PageDAO pageDAO;
 	private StoryDAO storyDAO;
-
+	private HistoryDAO historyDAO;
 	public ChapterDetailPageController() {
 		super();
 
@@ -36,6 +40,7 @@ public class ChapterDetailPageController extends HttpServlet {
 		chapterDAO = new ChapterDAO();
 		pageDAO = new PageDAO();
 		storyDAO = new StoryDAO();
+		historyDAO = new HistoryDAO();
 
 		// 1. Lấy ID chương từ URL
 		String idStr = request.getParameter("id");
@@ -54,7 +59,7 @@ public class ChapterDetailPageController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/home-page");
 				return;
 			}
-
+			User user = (User) request.getSession().getAttribute("user");
 			// 3. Lấy thông tin truyện để hiện tên truyện trên đầu trang
 			Stories story = storyDAO.getStoryById(currentChapter.getStoryID());
 
@@ -78,7 +83,19 @@ public class ChapterDetailPageController extends HttpServlet {
 					break;
 				}
 			}
+			boolean haveTitle = true;
+			if (currentChapter.getTitle().equalsIgnoreCase("KHÔNG CÓ TIÊU ĐỀ")) {
+				haveTitle = false;
+			}
+			boolean nextChapterHaveTitle = false;
 
+			if (nextChapter != null) {
+				String nextTitle = nextChapter.getTitle();
+				if (nextTitle != null && !nextTitle.trim().isEmpty()
+						&& !nextTitle.equalsIgnoreCase("KHÔNG CÓ TIÊU ĐỀ")) {
+					nextChapterHaveTitle = true;
+				}
+			}
 			// 7. Đẩy toàn bộ dữ liệu sang JSP
 			request.setAttribute("story", story);
 			request.setAttribute("currentChapter", currentChapter);
@@ -86,8 +103,12 @@ public class ChapterDetailPageController extends HttpServlet {
 			request.setAttribute("allChapters", allChapters);
 			request.setAttribute("prevChapter", prevChapter);
 			request.setAttribute("nextChapter", nextChapter);
-
-			request.getRequestDispatcher("/WEB-INF/view/chapter_detail_page/chapter_detail.jsp").forward(request, response);
+			request.setAttribute("haveTitle", haveTitle);
+			request.setAttribute("nextChapterHaveTitle", nextChapterHaveTitle);
+			storyDAO.increaseView(story.getId());
+			historyDAO.saveHistory(user.getId(), currentChapter.getId(), story.getId());
+			request.getRequestDispatcher("/WEB-INF/view/chapter_detail_page/chapter_detail.jsp").forward(request,
+					response);
 
 		} catch (NumberFormatException e) {
 			response.sendRedirect(request.getContextPath() + "/home-page");

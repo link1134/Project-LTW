@@ -39,7 +39,7 @@
 		<nav class="nav-bar">
 			<div class="nav-bar__content">
 				<a class="nav-bar__content--left"
-					href="${pageContext.request.contextPath }/home_page"
+					href="${pageContext.request.contextPath }/home-page"
 					data-discorver="true"> <img
 					src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
 					alt="" class="nav-bar__content--left--logo">

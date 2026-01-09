@@ -232,4 +232,25 @@ public class ChapterDAO {
 		return null;
 	}
 
+	public int countChapter(int storyID) {
+		String sql = "SELECT COUNT(*) FROM Chapter WHERE story_id = ?";
+		int count = 0;
+
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setInt(1, storyID);
+
+			try (ResultSet rs = ps.executeQuery()) {
+				if (rs.next()) {
+					count = rs.getInt(1);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return count;
+	}
+
 }

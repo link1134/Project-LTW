@@ -53,13 +53,14 @@ public class StoryPageController extends HttpServlet {
 		if (user != null) {
 			isFollowed = rlDAO.isFollowed(user.getId(), storyID);
 		}
-
+		int numChapter = chapterDAO.countChapter(storyID);
+		story.setNumChapter(numChapter);
 		request.setAttribute("isFollowed", isFollowed);
 		request.setAttribute("story", story);
 		request.setAttribute("chapters", chapters);
 		request.setAttribute("storyGenres", storyGenres);
 		request.setAttribute("similarStories", similarStories);
-
+	
 		request.getRequestDispatcher("WEB-INF\\view\\story_page\\story.jsp").forward(request, response);
 	}
 

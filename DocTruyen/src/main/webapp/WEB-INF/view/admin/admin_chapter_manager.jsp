@@ -134,7 +134,7 @@
 									placeholder="VD: Chương 2.1" required></td>
 
 								<td><input type="text" name="title"
-									placeholder="Tựa đề chương" required></td>
+									placeholder="Tựa đề chương" ></td>
 
 								<td>—</td>
 

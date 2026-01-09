@@ -421,4 +421,17 @@ public class StoryDAO {
 		System.out.println(stDAO.getStoryById(18).getTitle());
 	}
 
+	public void increaseView(int id) {
+		String sql = "UPDATE Stories SET view_counnt = view_counnt + 1 WHERE id = ?";
+
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setInt(1, id);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
