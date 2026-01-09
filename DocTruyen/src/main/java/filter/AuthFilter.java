@@ -27,7 +27,8 @@ public class AuthFilter implements Filter {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	@Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
+	public void init(FilterConfig filterConfig) throws ServletException {
+	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -39,20 +40,21 @@ public class AuthFilter implements Filter {
 
 		String path = req.getRequestURI().substring(req.getContextPath().length());
 		if (path.startsWith("/static/")) {
-	        chain.doFilter(request, response);
-	        return;
-	    }
-		if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/forgot-password")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/forgot-password")
+				|| path.startsWith("/reset-password") || path.startsWith("/verify-otp")) {
 			chain.doFilter(request, response);
 			return;
 		}
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
-            if (path.startsWith("/admin") && !"ADMIN".equals(user.getRole())) {
-                res.sendRedirect(req.getContextPath() + "/login");
-                return;
-            }
+			if (path.startsWith("/admin") && !"ADMIN".equals(user.getRole())) {
+				res.sendRedirect(req.getContextPath() + "/login");
+				return;
+			}
 
 			chain.doFilter(request, response);
 		} else {
