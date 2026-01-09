@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
 <title>Đọc Truyện || Đăng Nhập</title>
+<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
 <!-- main css -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/css/login_register/style.css">
@@ -83,8 +83,8 @@
 			</div>
 			<div class="form__links">
 				<a href="${pageContext.request.contextPath}/register"
-					class="form__link">bạn chưa có tài khoản?</a> <a href="#"
-					class="form__link">bạn quên mật khẩu?</a>
+					class="form__link">bạn chưa có tài khoản?</a> 
+					<a href="${pageContext.request.contextPath }/forgot-password"class="form__link">bạn quên mật khẩu?</a>
 
 			</div>
 

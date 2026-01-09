@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đọc truyện || Đăng ký</title>
     <link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
-    <title>Đọc truyện ||Đăng ký</title>
     <!-- main css2 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/login_register/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
