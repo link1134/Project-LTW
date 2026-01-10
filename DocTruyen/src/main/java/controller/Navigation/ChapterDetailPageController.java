@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
 import model.bean.Chapter;
+import model.bean.Comment;
 import model.bean.Page;
 import model.bean.Stories;
 import model.bean.User;
 import model.dao.ChapterDAO;
+import model.dao.CommentDAO;
 import model.dao.HistoryDAO;
 import model.dao.PageDAO;
 import model.dao.StoryDAO;
@@ -30,6 +32,7 @@ public class ChapterDetailPageController extends HttpServlet {
 	private PageDAO pageDAO;
 	private StoryDAO storyDAO;
 	private HistoryDAO historyDAO;
+	private CommentDAO commentDAO = new CommentDAO();
 	public ChapterDetailPageController() {
 		super();
 
@@ -73,7 +76,8 @@ public class ChapterDetailPageController extends HttpServlet {
 			// 6. Xử lý logic chương trước/sau (Dành cho 2 nút điều hướng)
 			Chapter prevChapter = null;
 			Chapter nextChapter = null;
-
+			List<Comment> comments = commentDAO.getCommentsByChapterId(currentChapter.getId());
+			request.setAttribute("comments", comments);
 			for (int i = 0; i < allChapters.size(); i++) {
 				if (allChapters.get(i).getId() == chapterId) {
 					if (i > 0)
@@ -96,7 +100,9 @@ public class ChapterDetailPageController extends HttpServlet {
 					nextChapterHaveTitle = true;
 				}
 			}
+			request.setAttribute("currentUserId", user.getId());
 			// 7. Đẩy toàn bộ dữ liệu sang JSP
+			request.setAttribute("countComment", commentDAO.countComment(chapterId));
 			request.setAttribute("story", story);
 			request.setAttribute("currentChapter", currentChapter);
 			request.setAttribute("pages", pages);

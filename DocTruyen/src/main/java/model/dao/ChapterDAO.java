@@ -178,6 +178,24 @@ public class ChapterDAO {
 		return false;
 	}
 
+	public int getMaxChapterNumber(int storyId) {
+		String sql = "SELECT ISNULL(MAX(chapter_number), 0) FROM Chapter WHERE story_id = ?";
+
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setInt(1, storyId);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	public Chapter getLatestPublishedChapter(int storyId) {
 		String sql = """
 				    SELECT TOP 1 *

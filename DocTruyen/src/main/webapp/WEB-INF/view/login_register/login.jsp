@@ -84,7 +84,7 @@
 			<div class="form__links">
 				<a href="${pageContext.request.contextPath}/register"
 					class="form__link">bạn chưa có tài khoản?</a> 
-					<a href="${pageContext.request.contextPath }/forgot-password"class="form__link">bạn quên mật khẩu?</a>
+					<a href="${pageContext.request.contextPath}/forgot-password"class="form__link">bạn quên mật khẩu?</a>
 
 			</div>
 

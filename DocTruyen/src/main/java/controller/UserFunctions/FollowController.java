@@ -36,17 +36,26 @@ public class FollowController extends HttpServlet {
 
         List<Stories> stories = dao.getFollowedStories(user.getId());
         Map<Integer, String> latestChapterInfo = new HashMap<>();
-        for (Stories s : stories) {
-            Chapter c = chapterDAO.getLatestPublishedChapter(s.getId());
 
-            if (c != null && c.getPublishedAt() != null) {
-                String info = "C. " + c.getDisplayNumChapter()
-                        + " - " + TimeAgoUtils.format(c.getPublishedAt());
+        for (Stories s : stories) {
+
+           
+            Chapter latestChapter = chapterDAO.getLatestPublishedChapter(s.getId());
+
+           
+            int maxChapterNumber = chapterDAO.getMaxChapterNumber(s.getId());
+
+            if (maxChapterNumber > 0 && latestChapter != null && latestChapter.getPublishedAt() != null) {
+
+                String info = "C. " + maxChapterNumber
+                        + " - " +  s.getTimeAgo();
+
                 latestChapterInfo.put(s.getId(), info);
             } else {
                 latestChapterInfo.put(s.getId(), "Chưa có chương");
             }
         }
+
 
         
         request.setAttribute("title", "Follow Page");

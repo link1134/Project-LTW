@@ -208,7 +208,9 @@ header {
     text-decoration: none;
     color: #050505;
 }
-
+.story-genres{
+	padding-top: 1rem;
+}
 .story-actions { margin-top: 20px; display: flex; gap: 12px; }
 .btn { padding: 10px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; }
 .btn-follow { background: #e7f3ff; color: #1877f2; border: none; cursor: pointer;}

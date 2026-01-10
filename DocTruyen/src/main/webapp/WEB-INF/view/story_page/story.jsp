@@ -56,7 +56,7 @@
 
 					<div class="story-genres">
 						<c:forEach var="genre" items="${storyGenres}">
-							<a href="${pageContext.request.contextPath}/genre?id=${genre.id}"
+							<a href="${pageContext.request.contextPath}/genre?genreId=${genre.id}"
 								class="genre-tag"> <c:out value="${genre.name}" />
 							</a>
 						</c:forEach>

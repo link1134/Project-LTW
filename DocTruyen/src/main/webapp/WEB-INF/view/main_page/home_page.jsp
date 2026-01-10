@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
+<link rel="icon"
+	href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
+	type="image/png">
 <title>Đọc truyện || Trang chủ</title>
 <!-- main css2 -->
 
@@ -30,27 +32,36 @@
 		<div class="big-wrapper">
 			<div class="big-carousel">
 				<div class="big-card card-no-marker"></div>
-					<c:forEach var="story" items="${list9NewStories}">
+				<c:forEach var="story" items="${list9NewStories}">
 					<div class="big-card">
-						<img src="${pageContext.request.contextPath}/${story.bigCoverImageURL}"alt="<c:out value='${story.title}'/>" class="big-card-img">
+						<img
+							src="${pageContext.request.contextPath}/${story.bigCoverImageURL}"
+							alt="<c:out value='${story.title}'/>" class="big-card-img">
 						<div class="big-card-content">
 							<div class="big-card-description">
 								<div>
-									<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
-										<h2 class="big-card-name"><c:out value="${story.title}"/></h2>
+									<a
+										href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+										<h2 class="big-card-name">
+											<c:out value="${story.title}" />
+										</h2>
 									</a>
 								</div>
 								<div class="big-card-small-description">
-									<p><c:out value="${story.description}"/></p>
+									<p>
+										<c:out value="${story.description}" />
+									</p>
 								</div>
 							</div>
 							<div class="big-card-details-btn">
-								<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}">  Xem thông tin </a>
+								<a
+									href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+									Xem thông tin </a>
 							</div>
 						</div>
 					</div>
-					</c:forEach>
-				
+				</c:forEach>
+
 				<div class="big-card card-no-marker"></div>
 
 			</div>
@@ -62,17 +73,27 @@
 				<c:forEach var="story" items="${newestStories}">
 					<div class="card">
 						<div class="card-wrapped">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
-								<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+								<img
+								src="${pageContext.request.contextPath}/${story.coverImageURL}"
+								alt="<c:out value='${story.title}'/>" class="card-img">
 							</a>
 						</div>
 						<div class="card-description">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
-								<h3><c:out value="${story.title}"/></h3>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+								class="card-description-name">
+								<h3>
+									<c:out value="${story.title}" />
+								</h3>
 							</a>
 							<h5>
-								<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
-									-<span><c:out value="${story.timeAgo}" /></span>
+								<a
+									href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+									class="card-description-chapter_time"> <span>C.<c:out
+											value="${story.numChapter}" /></span> -<span><c:out
+											value="${story.timeAgo}" /></span>
 								</a>
 
 							</h5>
@@ -81,26 +102,34 @@
 				</c:forEach>
 			</div>
 		</div>
-				
+
 		<div class="list_manga bg_secondl">
 			<h1>ROMCOM</h1>
 			<div class="carousel">
 				<c:forEach var="story" items="${romcomStories}">
 					<div class="card">
 						<div class="card-wrapped">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
-                        		<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
-                    		</a>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+								<img
+								src="${pageContext.request.contextPath}/${story.coverImageURL}"
+								alt="<c:out value='${story.title}'/>" class="card-img">
+							</a>
 						</div>
 						<div class="card-description">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
-                        		<h3><c:out value="${story.title}"/></h3>
-                    		</a>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+								class="card-description-name">
+								<h3>
+									<c:out value="${story.title}" />
+								</h3>
+							</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
-									- <span><c:out value="${story.timeAgo}" /></span>
+								<a href="" class="card-description-chapter_time"> <span>C.<c:out
+											value="${story.numChapter}" /></span> - <span><c:out
+											value="${story.timeAgo}" /></span>
 								</a>
-	
+
 							</h5>
 						</div>
 					</div>
@@ -113,24 +142,32 @@
 				<c:forEach var="story" items="${oneshotStories}">
 					<div class="card">
 						<div class="card-wrapped">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
-                        		<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
-                    		</a>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+								<img
+								src="${pageContext.request.contextPath}/${story.coverImageURL}"
+								alt="<c:out value='${story.title}'/>" class="card-img">
+							</a>
 						</div>
 						<div class="card-description">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
-                        		<h3><c:out value="${story.title}"/></h3>
-                    		</a>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+								class="card-description-name">
+								<h3>
+									<c:out value="${story.title}" />
+								</h3>
+							</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
-									- <span><c:out value="${story.timeAgo}" /></span>
+								<a href="" class="card-description-chapter_time"> <span>C.<c:out
+											value="${story.numChapter}" /></span> - <span><c:out
+											value="${story.timeAgo}" /></span>
 								</a>
-	
+
 							</h5>
 						</div>
 					</div>
 				</c:forEach>
-				
+
 			</div>
 		</div>
 		<div class="list_manga bg_fourthl">
@@ -139,24 +176,32 @@
 				<c:forEach var="story" items="${fantasyStories}">
 					<div class="card">
 						<div class="card-wrapped">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}"> 
-                        		<img src="${pageContext.request.contextPath}/${story.coverImageURL}"alt="<c:out value='${story.title}'/>" class="card-img">
-                    		</a>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+								<img
+								src="${pageContext.request.contextPath}/${story.coverImageURL}"
+								alt="<c:out value='${story.title}'/>" class="card-img">
+							</a>
 						</div>
 						<div class="card-description">
-							<a href="${pageContext.request.contextPath}/story-detail?id=${story.id}" class="card-description-name">
-                        		<h3><c:out value="${story.title}"/></h3>
-                    		</a>
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+								class="card-description-name">
+								<h3>
+									<c:out value="${story.title}" />
+								</h3>
+							</a>
 							<h5>
-								<a href="" class="card-description-chapter_time"> <span>C.<c:out value="${story.numChapter}" /></span>
-									- <span><c:out value="${story.timeAgo}" /></span>
+								<a href="" class="card-description-chapter_time"> <span>C.<c:out
+											value="${story.numChapter}" /></span> - <span><c:out
+											value="${story.timeAgo}" /></span>
 								</a>
-	
+
 							</h5>
 						</div>
 					</div>
 				</c:forEach>
-				
+
 			</div>
 		</div>
 	</main>

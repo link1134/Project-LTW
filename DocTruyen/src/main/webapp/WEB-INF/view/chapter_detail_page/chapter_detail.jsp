@@ -27,7 +27,8 @@
 	<main>
 		<div class="story-interaction">
 			<button class="comment-button">
-				<span>0</span> <span><i class="fa-solid fa-message"></i></span>
+				<span>${countComment}</span> <span><i
+					class="fa-solid fa-message"></i></span>
 			</button>
 
 			<div class="content-select-controller">
@@ -91,34 +92,28 @@
 						<i class="fa-solid fa-xmark"></i>
 					</button>
 				</div>
-				<div class="comment_box_content">
-					<div class="comment_box_inner_content">
-						<div class="comment">
-							<div class="comment_author_and_content">
-								<div class="comment_author">
-									<span>Hiển</span>
-								</div>
-								<div class="comment_content">
-									<p>Eeyo wtf ?????</p>
-								</div>
-							</div>
-							<div class="comment_information">
-								<span>2 năm trước</span> <span class="mx-1">·</span> <span>
-									<span class="text-gray-700">^</span> 134022
-								</span> <span class="mx-1">·</span>
-								<button class="reply_button">Trả lời</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				<jsp:include page="/WEB-INF/view/utility/comments.jsp" />
 				<div class="write_comment_box">
-					<form action="">
+					<form id="commentForm">
+						<textarea name="content" placeholder="Nhập bình luận..."
+							class="comment_input" required></textarea>
 						<div>
-							<button>Gửi</button>
+							<div class="reply-target">
+								<span>Đang trả lời comment: </span> <span></span>
+								<button>
+									<i class="fa-solid fa-xmark"></i>
+								</button>
+
+							</div>
+							<button type="submit">Gửi</button>
 						</div>
-						<textarea placeholder="Nhập bình luận..." class="comment_input"></textarea>
+						<!-- Ẩn ID chương -->
+						<input type="hidden" name="parentCommentId" id="parentCommentId">
+						
+						<input type="hidden" name="chapterId" value="${currentChapter.id}">
 					</form>
 				</div>
+
 			</div>
 		</div>
 		<div class="chapter_overlay" id="chapterOverlay">
@@ -327,5 +322,122 @@
 
 		});
 	</script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	    const commentForm = document.getElementById("commentForm");
+	    const commentOverlayContent = document.querySelector(".comment_box_inner_content");
+
+	    commentForm.addEventListener("submit", function(e) {
+	        e.preventDefault();
+
+	        const formData = new FormData(commentForm);
+	        const params = new URLSearchParams();
+	        for (let pair of formData.entries()) {
+	            params.append(pair[0], pair[1]);
+	        }
+
+	        fetch(`${pageContext.request.contextPath}/comment`, {
+	            method: 'POST',
+	            headers: {
+	                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+	            },
+	            body: params.toString()
+	        })
+	        .then(res => res.text())
+	        
+	        .then(html => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const newInner = tempDiv
+        .querySelector('.comment_box_inner_content').innerHTML;
+
+    document.querySelector('.comment_box_inner_content').innerHTML = newInner;
+})
+
+	        .catch(err => console.error(err));
+	    });
+
+	});
+
+	</script>
+	<script>
+document.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("remove_button")) return;
+
+    const commentId = e.target.dataset.commentId;
+    const chapterId = document.querySelector(
+        'input[name="chapterId"]'
+    ).value;
+
+    if (!confirm("Bạn chắc chắn muốn xóa bình luận này?")) return;
+
+    const params = new URLSearchParams();
+    params.append("action", "delete");
+    params.append("commentId", commentId);
+    params.append("chapterId", chapterId);
+
+    fetch(`${pageContext.request.contextPath}/comment`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: params.toString()
+    })
+    .then(res => res.text())
+    .then(html => {
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+
+        document.querySelector(".comment_box_inner_content").innerHTML =
+            temp.querySelector(".comment_box_inner_content").innerHTML;
+    })
+    .catch(err => console.error(err));
+});
+</script>
+	<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const replyTarget = document.querySelector(".reply-target");
+    const replyTextSpan = replyTarget.querySelector("span:nth-child(2)");
+    const replyCancelBtn = replyTarget.querySelector("button");
+    const parentInput = document.getElementById("parentCommentId");
+    const commentTextarea = document.querySelector(".comment_input");
+
+    // ===== CLICK NÚT "TRẢ LỜI" =====
+    document.addEventListener("click", function (e) {
+        if (!e.target.classList.contains("reply_button")) return;
+
+        const commentDiv = e.target.closest(".comment");
+        const commentId = commentDiv.dataset.commentId;
+
+        // Hiện box reply
+        replyTarget.style.visibility = "visible";
+        replyTarget.style.pointerEvents = "auto";
+
+        // Hiển thị ^id
+        replyTextSpan.textContent = "^" + commentId;
+
+        // Gán parentCommentId
+        parentInput.value = commentId;
+
+        // Focus textarea
+        commentTextarea.focus();
+    });
+
+    // ===== CLICK NÚT X (HUỶ REPLY) =====
+    replyCancelBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        replyTarget.style.visibility = "hidden";
+        replyTarget.style.pointerEvents = "none";
+
+        replyTextSpan.textContent = "";
+        parentInput.value = "";
+    });
+
+});
+</script>
+
+
 </body>
 </html>
