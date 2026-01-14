@@ -101,6 +101,10 @@
 					</div>
 				</c:forEach>
 			</div>
+			<div class="read_more">
+				<a href="${pageContext.request.contextPath}/newest">>
+					Xem danh sách truyện </a>
+			</div>
 		</div>
 
 		<div class="list_manga bg_secondl">
@@ -134,6 +138,10 @@
 						</div>
 					</div>
 				</c:forEach>
+			</div>
+			<div class="read_more">
+				<a href="${pageContext.request.contextPath}/genre?genreId=33">>
+					Xem danh sách truyện </a>
 			</div>
 		</div>
 		<div class="list_manga bg_thirdl">
@@ -169,6 +177,10 @@
 				</c:forEach>
 
 			</div>
+			<div class="read_more">
+				<a href="${pageContext.request.contextPath}/genre?genreId=34">>
+					Xem danh sách truyện </a>
+			</div>
 		</div>
 		<div class="list_manga bg_fourthl">
 			<h1>FANTASY</h1>
@@ -202,6 +214,10 @@
 					</div>
 				</c:forEach>
 
+			</div>
+			<div class="read_more">
+				<a href="${pageContext.request.contextPath}/genre?genreId=35">>
+					Xem danh sách truyện </a>
 			</div>
 		</div>
 	</main>
