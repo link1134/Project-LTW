@@ -132,6 +132,22 @@
 		sans-serif;
 }
 
+.search_box_inner form {
+	display: flex;
+}
+
+.search_box_inner form input {
+	width: 100%;
+}
+
+.search_box_inner form button {
+	width : 5rem;
+	cursor: pointer;
+	border: none;
+	width: 5rem;
+	background-color: transparent;
+}
+
 .main_logo {
 	text-decoration: none
 }
@@ -148,7 +164,7 @@
 
 			<!-- Center logo -->
 			<a class="main_logo"
-				href="${pageContext.request.contextPath}/home_page">
+				href="${pageContext.request.contextPath}/home-page">
 				<div class="nav-logo">
 					<img
 						src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
@@ -168,12 +184,13 @@
 					class="avatar" alt="User" id="userAvatar">
 
 					<div class="user_dropdown" id="userDropdown">
-						<a href="${pageContext.request.contextPath}/follow-page"> Danh
-							sách theo dõi</a> <a
+						<a href="${pageContext.request.contextPath}/follow-story">
+							Danh sách theo dõi</a> <a
 							href="${pageContext.request.contextPath}/history-page"> Lịch
 							sử đọc </a>
 						<c:if test="${sessionScope.user.role == 'ADMIN'}">
-							<a href="${pageContext.request.contextPath}/admin">Trang Admin</a>
+							<a href="${pageContext.request.contextPath}/admin">Trang
+								Admin</a>
 						</c:if>
 						<hr>
 						<form action="${pageContext.request.contextPath}/logout"
@@ -187,18 +204,24 @@
 		</nav>
 	</header>
 	<div class="search_overlay" id="searchOverlay">
-
 		<div class="search_box">
 			<div class="search_box_inner">
-				<input type="text" placeholder="Tìm kiếm truyện">
+				<form action="${pageContext.request.contextPath}/quick-search"
+					method="get">
+					<input type="text" name="keyword" placeholder="Tìm kiếm truyện"
+						required>
+					<button type="submit">
+						<i class="fa-solid fa-magnifying-glass fa-xl"></i>
+					</button>
+				</form>
+
 				<div>
 					<a href="#">Tìm kiếm nâng cao</a>
 				</div>
 			</div>
-
 		</div>
-
 	</div>
+
 	<script>
 		const avatar = document.getElementById("userAvatar");
 		const dropdown = document.getElementById("userDropdown");

@@ -162,10 +162,11 @@ main {
 	text-decoration: none;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	line-clamp: 2;
+	font-size: .8rem;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 	color: black;
+	-webkit-line-clamp: 2;
 }
 
 .card-description-chapter_time {
@@ -283,45 +284,38 @@ main {
 		<div class="container">${subTitle}</div>
 		<div class="card_container">
 			<div class="card-grid">
-				<div class="card">
-					<div class="card-wrapped">
-						<a href="${pageContext.request.contextPath}/story_page"> <img
-							src="${pageContext.request.contextPath}/IMAGE/thumnail.png"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="${pageContext.request.contextPath}/story_page"
-							class="card-description-name">
-							<h3>Doraemon</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.6</span>
-								- <span>6 ngày trước</span>
+				<c:forEach var="story" items="${stories}">
+					<div class="card">
+						<div class="card-wrapped">
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}">
+								<img
+								src="${pageContext.request.contextPath}/${story.coverImageURL}"
+								class="card-img">
 							</a>
-							</h4>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-wrapped">
-						<a href=""> <img
-							src="${pageContext.request.contextPath}/IMAGE/image_processing20251206-2-1l6kpfc.jpg"
-							alt="" class="card-img">
-						</a>
-					</div>
-					<div class="card-description">
-						<a href="" class="card-description-name">
-							<h3>IDOLxIDOL STORY</h3>
-						</a>
-						<h5>
-							<a href="" class="card-description-chapter_time"> <span>C.1</span>
-								- <span>1 ngày trước</span>
-							</a>
+						</div>
 
-							</h4>
+						<div class="card-description">
+							<a
+								href="${pageContext.request.contextPath}/story-detail?id=${story.id}"
+								class="card-description-name">
+								<h3>
+									<c:out value="${story.title}" />
+								</h3>
+							</a>
+							<h5 class="card-description-chapter_time">
+								<span>${latestChapterInfo[story.id]}</span>
+							</h5>
+
+						</div>
 					</div>
-				</div>
+				</c:forEach>
+
+				<c:if test="${empty stories}">
+					<p>Chưa có truyện nào.</p>
+				</c:if>
 			</div>
+
 			<div class="controller ">
 				<a href="#" class="disable-button"> <span>←Trang sau</span>
 				</a> <a href="#" class="disable-button"> <span>Trang trước →</span>

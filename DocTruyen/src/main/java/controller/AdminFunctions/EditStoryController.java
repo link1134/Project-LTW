@@ -1,4 +1,4 @@
-package controller;
+package controller.AdminFunctions;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +62,7 @@ public class EditStoryController extends HttpServlet {
             String description = request.getParameter("Description");
             String[] genreIds = request.getParameterValues("genreID");
             
-            String baseUploadPath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen\\src\\main\\webapp\\static\\uploads";
+            String baseUploadPath = "D:\\WorkSpace\\JAVA\\DocTruyen\\src\\main\\webapp\\static\\uploads";
             String storyPath = baseUploadPath + File.separator + id;
             
             File storyDIR = new File(storyPath);

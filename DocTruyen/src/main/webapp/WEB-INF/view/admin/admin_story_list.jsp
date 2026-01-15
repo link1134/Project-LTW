@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon"
+	href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"
+	type="image/png">
 <title>Admin Dashboard | Danh Sách Truyện</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/static/css/reset.css">
@@ -31,63 +34,59 @@
 			<section id="story-list" class="content-panel active">
 				<h3>Danh Sách Truyện Hiện Có</h3>
 
-				<div class="search-bar">
-					<input type="text"
-						placeholder="Tìm kiếm theo tên truyện, tác giả...">
-					<button class="btn btn-secondary">Tìm kiếm</button>
-				</div>
-
-				<table>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Bìa</th>
-							<th>Tên Truyện</th>
-							<th>Tác giả</th>
-							<th>Thao tác</th>
-							<th>Lần cuối cập nhật</th>
-							<th>Số chương</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<c:forEach var="story" items="${storyList}">
+				
+				<div class="table-wrapper">
+					<table>
+						<thead>
 							<tr>
-								<td>${story.id}</td>
-
-								<td><img
-									src="${pageContext.request.contextPath}/${story.coverImageURL}"
-									alt="cover"
-									style=" height: 5rem; object-fit: cover; border-radius: 4px;">
-								</td>
-
-								<td><strong>${story.title}</strong></td>
-
-								<td>${story.author}</td>
-
-								<td>
-									<div class="btn-group">
-										<c:url var="chapterManagerUrl" value="/admin/chapter-manager">
-											<c:param name="storyId" value="${story.id}" />
-											<c:param name="storyTitle" value="${story.title}" />
-										</c:url>
-										<a href="${chapterManagerUrl}" class="btn btn-action">
-											Quản lý chapter </a> <a
-											href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
-											class="btn btn-edit">Sửa</a> <a
-											href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
-											class="btn btn-edit">Xóa</a>
-									</div>
-								</td>
-
-								<!-- để trống -->
-								<td></td>
-								<td></td>
+								<th>ID</th>
+								<th>Bìa</th>
+								<th style="max-width: 250px">Tên Truyện</th>
+								<th style="max-width: 250px">Tác giả</th>
+								<th>Thao tác</th>
+								<th>Lần cuối cập nhật</th>
+								<th>Số chương</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
 
+						<tbody>
+							<c:forEach var="story" items="${storyList}">
+								<tr>
+									<td>${story.id}</td>
+
+									<td><img
+										src="${pageContext.request.contextPath}/${story.coverImageURL}"
+										alt="cover"
+										style="height: 5rem; object-fit: cover; border-radius: 4px;">
+									</td>
+
+									<td style="max-width: 250px"><strong>${story.title}</strong></td>
+
+									<td style="max-width: 250px">${story.author}</td>
+
+									<td>
+										<div class="btn-group">
+											<c:url var="chapterManagerUrl" value="/admin/chapter-manager">
+												<c:param name="storyId" value="${story.id}" />
+												<c:param name="storyTitle" value="${story.title}" />
+											</c:url>
+											<a href="${chapterManagerUrl}" class="btn btn-action">
+												Quản lý chapter </a> <a
+												href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
+												class="btn btn-edit">Sửa</a> <a
+												href="${pageContext.request.contextPath}/admin/edit-story?id=${story.id}"
+												class="btn btn-edit">Xóa</a>
+										</div>
+									</td>
+
+									<!-- để trống -->
+									<td>${story.lastUpdate}</td>
+									<td><c:out value="${story.numChapter}" /></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</section>
 		</main>
 	</div>

@@ -1,4 +1,4 @@
-package controller;
+package controller.AdminFunctions;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +19,11 @@ import model.dao.PageDAO;
 /**
  * Servlet implementation class PageManagerController
  */
-@MultipartConfig
+@MultipartConfig(
+	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+	    maxFileSize = 1024 * 1024 * 10,      // 10MB cho mỗi file
+	    maxRequestSize = 1024 * 1024 * 50    // 50MB cho tổng toàn bộ form
+	)
 @WebServlet("/admin/page-manager")
 public class PageManagerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +56,7 @@ public class PageManagerController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
 		if ("addPage".equals(action)) {
@@ -64,12 +68,12 @@ public class PageManagerController extends HttpServlet {
 
 	private void addPage(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		int chapterId = Integer.parseInt(request.getParameter("chapterId"));
 		int storyId = Integer.parseInt(request.getParameter("storyId"));
 		String displayNum = request.getParameter("displayNum");
 
-		String baseUploadPath = "C:/Users/THANH HIEN/Desktop/Web/DocTruyen/" + "src/main/webapp/static/uploads/";
+		String baseUploadPath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen" + "/src/main/webapp/static/uploads/";
 
 		String uploadPath = "static/uploads/" + storyId + "/" + displayNum + "/";
 		String realPath = baseUploadPath + storyId + "/" + displayNum + "/";
@@ -80,6 +84,7 @@ public class PageManagerController extends HttpServlet {
 		}
 
 		for (Part part : request.getParts()) {
+			System.out.println("Processing part: " + part.getName() + " | File: " + part.getSubmittedFileName());
 			if (!"images".equals(part.getName()) || part.getSize() == 0)
 				continue;
 
@@ -93,6 +98,7 @@ public class PageManagerController extends HttpServlet {
 				if (pageNumber < 0)
 					continue;
 			} catch (NumberFormatException e) {
+				System.out.println("Lỗi định dạng tên file: " + baseName); // Thêm dòng này
 				continue; // bỏ file sai format
 			}
 
@@ -107,7 +113,7 @@ public class PageManagerController extends HttpServlet {
 
 			pageDAO.insertPage(page);
 		}
-
+		
 		response.sendRedirect(request.getContextPath() + "/admin/page-manager?id=" + chapterId + "&storyId=" + storyId
 				+ "&displayNum=" + displayNum);
 	}

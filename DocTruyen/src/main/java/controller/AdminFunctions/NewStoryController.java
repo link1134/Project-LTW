@@ -1,4 +1,4 @@
-package controller;
+package controller.AdminFunctions;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +66,9 @@ public class NewStoryController extends HttpServlet {
 
 	        if (storyId != -1) {
 	            // 4. Thiết lập đường dẫn theo ID vừa lấy được
-	            String baseUploadPath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen\\src\\main\\webapp\\static\\uploads";//tự thay đường dẫn
+	        	//D:\\WorkSpace\\JAVA\\DocTruyen\\src\\main\\webapp\\static\\uploads
+	        	//C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen\\src\\main\\webapp\\static\\uploads
+	            String baseUploadPath = "D:\\WorkSpace\\JAVA\\DocTruyen\\src\\main\\webapp\\static\\uploads";//tự thay đường dẫn
 	          //String baseUploadPath= getServletContext().getRealPath("")+File.separator+"static" + File.separator + "uploads";//lưu vào server tomcat nhưng khi clean server mất hết
 	            String storyPath = baseUploadPath + File.separator + storyId; // Folder là ID
 	            

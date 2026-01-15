@@ -1,4 +1,4 @@
-package controller;
+package controller.Navigation;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.bean.Stories;
 import model.dao.StoryDAO;
 
-@WebServlet("/home_page")
+@WebServlet("/home-page")
 public class HomePageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StoryDAO storyDAO;

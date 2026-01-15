@@ -1,4 +1,4 @@
-package controller;
+package controller.AdminFunctions;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,7 +56,7 @@ public class ChapterManagerController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
 		if ("updateStatus".equals(action)) {
@@ -65,6 +65,10 @@ public class ChapterManagerController extends HttpServlet {
 			addChapter(request, response);
 		} else if ("editChapter".equals(action)) {
 			editChapter(request, response);
+		}
+		if (action == null) {
+		    response.sendRedirect(request.getContextPath() + "/admin/story-manager");
+		    return;
 		}
 
 	}
@@ -115,8 +119,8 @@ public class ChapterManagerController extends HttpServlet {
 	}
 
 	private void renameChapterFolder(int storyId, String oldDisplay, String newDisplay) {
-
-		String basePath = "C:/Users/THANH HIEN/Desktop/Web/DocTruyen/" + "src/main/webapp/static/uploads/";
+		//C:/Users/THANH HIEN/Desktop/Web/DocTruyen/
+		String basePath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen" + "src/main/webapp/static/uploads/";
 
 		File oldDir = new File(basePath + storyId + "/" + oldDisplay);
 		File newDir = new File(basePath + storyId + "/" + newDisplay);
@@ -138,6 +142,9 @@ public class ChapterManagerController extends HttpServlet {
 		String title = request.getParameter("title");
 
 		int nextChapterNumber = chapterDAO.highestChapterNumber(storyId) + 1;
+		if (title == null || title.trim().isEmpty()) {
+		    title = "Không có tiêu đề";
+		}
 
 		Chapter c = new Chapter();
 		c.setStoryID(storyId);
@@ -170,7 +177,7 @@ public class ChapterManagerController extends HttpServlet {
 
 	private void createChapterFolder(int storyId, String displayNumChapter) {
 		// Chỗ này đổi tùy máy
-		String basePath = "C:/Users/THANH HIEN/Desktop/Web/DocTruyen/" + "src/main/webapp/static/uploads/";
+		String basePath = "C:\\Users\\THANH HIEN\\Desktop\\Web\\DocTruyen" + "src/main/webapp/static/uploads/";
 
 		File storyDir = new File(basePath + storyId);
 

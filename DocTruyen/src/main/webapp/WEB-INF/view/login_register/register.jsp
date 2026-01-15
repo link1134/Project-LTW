@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đọc truyện || Đăng ký</title>
+    <link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
     <!-- main css2 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/login_register/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
@@ -19,7 +20,7 @@
     <header >
         <nav class="nav-bar">
             <div class="nav-bar__content">
-                <a class="nav-bar__content--left" href="${pageContext.request.contextPath }/home_page" data-discorver="true">
+                <a class="nav-bar__content--left" href="${pageContext.request.contextPath }/home-page" data-discorver="true">
                     <img src="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png" alt="" class="nav-bar__content--left--logo">
                     <div class="nav-bar__content--left--tittle-container">
                         <h1 class="nav-bar__content--left--tittle">DocTruyen</h1>

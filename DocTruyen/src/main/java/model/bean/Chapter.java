@@ -27,6 +27,10 @@ public class Chapter {
 		this.publishedAt = publishedAt;
 		this.status = status;
 	}
+	public String getTimeAgo() {
+        // Gọi hàm format từ Utils để tự động tính toán
+        return TimeAgoUtils.format(this.publishedAt);
+    }
 	
 	/*Getter và setter*/
 	public int getId() {
@@ -81,5 +85,6 @@ public class Chapter {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	
 }

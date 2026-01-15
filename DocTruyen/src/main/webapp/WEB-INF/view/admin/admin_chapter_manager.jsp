@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/static/css/reset.css">
 <link rel="stylesheet"
@@ -64,7 +65,6 @@
 					List chương của truyện: <span id="chapter-story-title">${storyTitle}</span>
 				</h3>
 				<div class="chapter-controller">
-					<button>Chỉnh sửa thứ tự</button>
 					<button type="button" id="btn-show-add">Thêm chapter mới</button>
 				</div>
 
@@ -114,9 +114,7 @@
 										data-title="${chapter.title}">
 										<i class="fa-solid fa-gear"></i>
 									</button>
-									<button>
-										<i class="fa-solid fa-xmark" style="color: red"></i>
-									</button></td>
+									</td>
 							</tr>
 						</c:forEach>
 						<tr id="add-chapter-row" style="display: none;">
@@ -133,7 +131,7 @@
 									placeholder="VD: Chương 2.1" required></td>
 
 								<td><input type="text" name="title"
-									placeholder="Tựa đề chương" required></td>
+									placeholder="Tựa đề chương" ></td>
 
 								<td>—</td>
 
@@ -199,27 +197,27 @@ document.querySelectorAll(".btn-edit").forEach(btn => {
         const editRow = document.getElementById("edit-chapter-row");
         const addRow = document.getElementById("add-chapter-row");
 
-        // Hide add row nếu đang mở
+       
         addRow.style.display = "none";
 
-        // 👉 CASE 1: Click lại cùng 1 chapter → toggle OFF
+       
         if (currentEditingId === chapterId) {
             editRow.style.display = "none";
             currentEditingId = null;
             return;
         }
 
-        // 👉 CASE 2: Edit chapter khác
+      
         currentEditingId = chapterId;
         editRow.style.display = "table-row";
 
-        // Fill dữ liệu
+      
         document.getElementById("edit-chapter-id").value = chapterId;
         document.getElementById("edit-display").value = btn.dataset.display;
         document.getElementById("old-display").value = btn.dataset.display;
         document.getElementById("edit-title").value = btn.dataset.title;
 
-        // Move edit row xuống ngay dưới dòng đang sửa
+       
         btn.closest("tr").after(editRow);
     });
 });

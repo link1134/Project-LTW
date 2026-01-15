@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/reset.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/admin/admin.css">
+    <link rel="icon"href="https://valvrareteam.net/images/Khong_Co_Tieu_e431_20250703112444.png"type="image/png">
     <title>Admin | Quản lý Truyện</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +36,7 @@
                 </ul>
             </nav>
             <div class="admin-logout">
-                <a href="#" class="logout-btn">Đăng xuất</a>
+                <a href="${pageContext.request.contextPath}/logout" class="logout-btn">Đăng xuất</a>
             </div>
         </aside>
 

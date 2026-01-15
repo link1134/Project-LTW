@@ -13,55 +13,69 @@ import model.database.DBContext;
 public class UserDAO {
 	public User loginUser(String email, String password) {
 
-	    String sql = "SELECT * FROM [User] WHERE email = ?";
+		String sql = "SELECT * FROM [User] WHERE email = ?";
 
-	    try (Connection conn = DBContext.getConnection();
-	         PreparedStatement ps = conn.prepareStatement(sql)) {
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
 
-	        ps.setString(1, email);
-	        ResultSet rs = ps.executeQuery();
+			ps.setString(1, email);
+			ResultSet rs = ps.executeQuery();
 
-	        if (rs.next()) {
-	            String hashedPassword = rs.getString("password");
+			if (rs.next()) {
+				String hashedPassword = rs.getString("password");
 
-	            // So sánh BCrypt
-	            if (BCrypt.checkpw(password, hashedPassword)) {
-	                User user = new User();
-	                user.setId(rs.getInt("id"));
-	                user.setUserName(rs.getString("username"));
-	                user.setEmail(rs.getString("email"));
-	                user.setRole(rs.getString("role"));
-	                
-	                return user;
-	            }
-	        }
+				// So sánh BCrypt
+				if (BCrypt.checkpw(password, hashedPassword)) {
+					User user = new User();
+					user.setId(rs.getInt("id"));
+					user.setUserName(rs.getString("username"));
+					user.setEmail(rs.getString("email"));
+					user.setRole(rs.getString("role"));
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return null;
+					return user;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean registerUser(User user) {
 
-	    String sql = "INSERT INTO [User] (username, password, email, role) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO [User] (username, password, email, role) VALUES (?, ?, ?, ?)";
 
-	    try (
-	        Connection conn = DBContext.getConnection();
-	        PreparedStatement ps = conn.prepareStatement(sql)
-	    ) {
-	        ps.setString(1, user.getUserName());
-	        ps.setString(2, user.getPassword()); 
-	        ps.setString(3, user.getEmail());
-	        ps.setString(4, user.getRole());
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getPassword());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getRole());
 
-	        int result = ps.executeUpdate();
-	        return result > 0;
+			int result = ps.executeUpdate();
+			return result > 0;
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        return false;
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean updatePassword(String email, String newPassword) {
+		String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+		String sql = "UPDATE [User] SET password = ? WHERE email = ?";
+
+		try (Connection conn = DBContext.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setString(1, hashedPassword); // Lưu chuỗi đã băm
+			ps.setString(2, email);
+
+			int rowAffected = ps.executeUpdate();
+			return rowAffected > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 }

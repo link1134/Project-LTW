@@ -313,14 +313,19 @@ main {
 }
 
 .chapter_box_content {
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding: 1rem;
 	overflow-y: auto;
 	flex-grow: 1;
 }
 
+.chapter_box_grid a.active {
+	background: rgb(37, 99, 235);
+	color: #fff;
+	pointer-events: none;
+}
+
 .chapter_box_grid {
-	gap: .25rem;
+	gap: .35rem;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	display: grid
 }
@@ -396,16 +401,24 @@ main {
 	flex-direction: column;
 	display: flex;
 }
+
+.yourComment {
+	padding-left: 3rem;
+}
+
 .comment_overlay.active {
 	opacity: 1;
 	visibility: visible;
 }
-.hide{
+
+.hide {
 	display: none;
 }
+
 .comment_overlay.active .comment_box {
 	transform: translateX(0);
 }
+
 .comment_box_title {
 	padding-top: .75rem;
 	padding-bottom: .75rem;
@@ -433,9 +446,53 @@ main {
 .write_comment_box div {
 	background-color: rgb(21 29 45/ 0.7);
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	padding: .25rem;
+	
+}
+
+.reply-target {
 	display: flex;
+	justify-content: center;
+	align-content: center;
+	visibility:hidden;
+	pointer-events: none;
+	color: white;
+	gap: .25rem;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+		Oxygen-Sans, DejaVu Sans, Ubuntu, Cantarell, Helvetica Neue,
+		sans-serif !important;
+	text-align: center;
+}
+.reply-target button{
+	border: none !important;
+	background-color: transparent !important;
+	padding: 0 !important;
+}
+.reply-comment{
+	margin-right: .125rem;
+    margin-bottom: .125rem;
+    display: inline-flex;
+    gap: .125rem;
+    background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.4;
+    font-size: .75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+    color: rgb(134 239 172 / var(--tw-text-opacity));
+}
+.reply-comment-id{
+	display: flex;
+    align-items: center;
+    padding: .125rem;
+}
+.reply-comment-username{
+	background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.4;
+    display: flex;
+    align-items: center;
+    padding: .125rem;
 }
 
 .write_comment_box div button {
@@ -511,7 +568,6 @@ main {
 	padding-top: .25rem;
 	padding-bottom: .25rem;
 	margin-bottom: .375rem;
-	
 }
 
 .comment_author span {
@@ -520,39 +576,55 @@ main {
 	color: rgb(209, 213, 219);
 	font-weight: 700;
 }
-.comment_content{
-	color: rgb(156 163 175);
+
+.comment_content {
+	color: rgb(156, 163, 175);
 	font-size: .875rem;
-    line-height: 1.25rem;
-    padding-left: .75rem;
-    padding-right: .75rem;
-    padding-top: .25rem;
-    padding-bottom: .25rem;
-    overflow-wrap: break-word;
-    user-select: text;
+	line-height: 1.25rem;
+	padding-left: .75rem;
+	padding-right: .75rem;
+	padding-top: .25rem;
+	padding-bottom: .25rem;
+	overflow-wrap: break-word;
+	user-select: text;
 }
-.comment_content p{
+
+.comment_content p {
 	margin-bottom: .5rem;
-    font-size: .875rem;
-    line-height: 1.25rem;
+	font-size: .875rem;
+	line-height: 1.25rem;
 }
-.mx-1{
+
+.mx-1 {
 	margin-left: .25rem;
-    margin-right: .25rem;
+	margin-right: .25rem;
 }
-.text-gray-700{
-	color: rgb(55 65 81);
+
+.text-gray-700 {
+	color: rgb(55, 65, 81);
 }
-.comment_information{
-	color: rgb(107 114 128);
+
+.comment_information {
+	color: rgb(107, 114, 128);
 	font-size: .75rem;
-    line-height: 1rem;
+	line-height: 1rem;
 }
-.reply_button{
-	border:none;
-	outline:none;
-	background-color:inherit;
-	color: rgb(156 163 175);
+
+.reply_button {
+	border: none;
+	outline: none;
+	background-color: inherit;
+	color: rgb(156, 163, 175);
+	font-weight: 700;
+	cursor: pointer;
+	padding: 0;
+}
+
+.remove_button {
+	border: none;
+	outline: none;
+	background-color: inherit;
+	color: rgb(248 113 113/ 0.6);
 	font-weight: 700;
 	cursor: pointer;
 	padding: 0;
