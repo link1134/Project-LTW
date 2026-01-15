@@ -65,7 +65,7 @@
 					List trang của truyện: <span id="chapter-story-title">${storyTitle}</span>
 				</h3>
 				<div class="chapter-controller">
-					<button>Chỉnh sửa thứ tự</button>
+					
 					<button type="button"
 						onclick="document.getElementById('uploadForm').style.display='block'">
 						Thêm ảnh</button>
@@ -97,7 +97,7 @@
 								<th>Chapter id</th>
 								<th>Số trang</th>
 
-								<th>Thao tác</th>
+								<!--  <th>Thao tác</th>-->
 							</tr>
 						</thead>
 
@@ -114,12 +114,10 @@
 									<td>${page.pageNumber}</td>
 									<td class="chapter_action_group">
 
-										<button type="button">
+										<!--  <button type="button">
 											<i class="fa-solid fa-gear"></i>
-										</button>
-										<button>
-											<i class="fa-solid fa-xmark" style="color: red"></i>
-										</button>
+										</button>-->
+										
 									</td>
 								</tr>
 

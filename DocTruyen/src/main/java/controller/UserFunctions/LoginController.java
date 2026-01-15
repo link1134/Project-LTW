@@ -24,6 +24,7 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	private UserDAO userDAO = new UserDAO();
+
 	public LoginController() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -36,8 +37,8 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login_register/login.jsp"); 
-	    dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login_register/login.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -46,26 +47,31 @@ public class LoginController extends HttpServlet {
 	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	        throws ServletException, IOException {
+			throws ServletException, IOException {
 
-	    request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
-	    String username = request.getParameter("email");
-	    String password = request.getParameter("password");
+		String username = request.getParameter("email");
+		String password = request.getParameter("password");
 
-	    User user = userDAO.loginUser(username, password);
+		User user = userDAO.loginUser(username, password);
 
-	    if (user != null) {
-	        HttpSession session = request.getSession();
-	        session.setAttribute("user", user);
-	        response.sendRedirect(request.getContextPath() + "/home-page");
-	    } else {
-	    	HttpSession session = request.getSession();
-	        session.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
-	        response.sendRedirect(request.getContextPath() + "/login");
-	    }
+		if (user != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+
+			
+			if ("ADMIN".equals(user.getRole())) {
+				response.sendRedirect(request.getContextPath() + "/admin/story-list");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/home-page");
+			}
+		} else {
+			HttpSession session = request.getSession();
+			session.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+			response.sendRedirect(request.getContextPath() + "/login");
+		}
+
 	}
-
-
 
 }

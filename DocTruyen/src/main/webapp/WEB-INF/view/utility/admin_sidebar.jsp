@@ -10,8 +10,7 @@
 
 	<nav class="main-nav">
 		<ul>
-			<li><a href="${pageContext.request.contextPath}/admin/dashboard"
-				class="nav-item"> Trang chủ </a></li>
+			
 
 			<li class="nav-group-title">Quản lý Nội dung</li>
 
@@ -34,6 +33,6 @@
 	</nav>
 
 	<div class="admin-logout">
-		<a href="#" class="logout-btn">Đăng xuất</a>
+		<a href="${pageContext.request.contextPath}/logout" class="logout-btn">Đăng xuất</a>
 	</div>
 </aside>

@@ -29,20 +29,20 @@ public class QuickSearchController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    	
         String keyword = request.getParameter("keyword");
 
         if (keyword == null || keyword.trim().isEmpty()) {
             response.sendRedirect(request.getContextPath() + "/");
             return;
         }
-
+        
         keyword = keyword.trim();
 
-        /* 1. Search truyện */
+        
         List<Stories> stories = storyDAO.searchStoriesByTitle(keyword);
 
-        /* 2. latestChapterInfo (GIỐNG genre) */
+       
         Map<Integer, String> latestChapterInfo = new HashMap<>();
 
         for (Stories s : stories) {
@@ -59,13 +59,13 @@ public class QuickSearchController extends HttpServlet {
             }
         }
 
-        /* 3. Set attribute cho JSP */
+      
         request.setAttribute("title", "Kết quả tìm kiếm");
         request.setAttribute("subTitle", "Kết quả cho: \"" + keyword + "\"");
         request.setAttribute("stories", stories);
         request.setAttribute("latestChapterInfo", latestChapterInfo);
 
-        /* 4. Forward */
+       
         request.getRequestDispatcher("/WEB-INF/view/utility/record_and_tag.jsp")
                .forward(request, response);
     }

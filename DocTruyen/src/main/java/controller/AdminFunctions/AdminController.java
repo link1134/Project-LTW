@@ -28,10 +28,10 @@ public class AdminController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 	        throws ServletException, IOException {
 		
-        // 1. Lấy Path Info (Phần sau /admin)
+        
 		String pathInfo = request.getPathInfo();
         
-        // Xác định action, mặc định là dashboard (cho admin.jsp)
+        
 		String action = (pathInfo != null && pathInfo.length() > 1) ? pathInfo.substring(1): "dashboard";
 		String targetView = "";
         

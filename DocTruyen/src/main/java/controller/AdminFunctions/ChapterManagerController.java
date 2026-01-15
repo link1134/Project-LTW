@@ -66,6 +66,10 @@ public class ChapterManagerController extends HttpServlet {
 		} else if ("editChapter".equals(action)) {
 			editChapter(request, response);
 		}
+		if (action == null) {
+		    response.sendRedirect(request.getContextPath() + "/admin/story-manager");
+		    return;
+		}
 
 	}
 

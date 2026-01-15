@@ -11,35 +11,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.bean.Stories;
+import model.dao.ChapterDAO;
 import model.dao.StoryDAO;
-
 
 @WebServlet("/admin/story-list")
 public class StoryListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private StoryDAO storyDAO= new StoryDAO();  
-    private static final String ADMIN_VIEW_PREFIX = "/WEB-INF/view/admin/";
-    
-    
-    public StoryListController() {
-        super();
-       
-    }
+	private StoryDAO storyDAO = new StoryDAO();
+	private ChapterDAO chapterDAO = new ChapterDAO();
+	private static final String ADMIN_VIEW_PREFIX = "/WEB-INF/view/admin/";
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//lấy danh sách truyện trong DB
-		List<Stories> listStroies= storyDAO.getAllStories();
-		request.setAttribute("activePage", "story-list");
+	public StoryListController() {
+		super();
 
-		request.setAttribute("storyList", listStroies);
-		request.getRequestDispatcher(ADMIN_VIEW_PREFIX+"admin_story_list.jsp").forward(request, response);;
-		
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// lấy danh sách truyện trong DB
+		List<Stories> listStroies = storyDAO.getAllStories();
+		request.setAttribute("activePage", "story-list");
+		for (Stories story : listStroies) {
+			int numChapter = chapterDAO.countChapter(story.getId());
+			story.setNumChapter(numChapter);
+		}
+		request.setAttribute("storyList", listStroies);
+		request.getRequestDispatcher(ADMIN_VIEW_PREFIX + "admin_story_list.jsp").forward(request, response);
+		;
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

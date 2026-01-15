@@ -51,21 +51,21 @@ public class GenreSearchController extends HttpServlet {
 			return;
 		}
 
-		/* 1. Lấy tên tag */
+		
 		String genreName = genreDAO.getGenreNameById(genreId);
 
-		/* 2. Lấy list truyện */
+		
 		List<Stories> stories = genreDAO.getStoriesByGenre(genreId);
 
-		/* 3. Tạo latestChapterInfo (GIỐNG FollowController) */
+	
 		Map<Integer, String> latestChapterInfo = new HashMap<>();
 
 		for (Stories s : stories) {
 
-			// 1. Chap mới nhất để lấy thời gian
+		
 			Chapter latestChapter = chapterDAO.getLatestPublishedChapter(s.getId());
 
-			// 2. Số chap lớn nhất
+		
 			int maxChapterNumber = chapterDAO.getMaxChapterNumber(s.getId());
 
 			if (maxChapterNumber > 0 && latestChapter != null && latestChapter.getPublishedAt() != null) {
@@ -78,7 +78,7 @@ public class GenreSearchController extends HttpServlet {
 			}
 		}
 
-		/* 4. Set attribute đúng JSP */
+		
 		request.setAttribute("title", genreName);
 		request.setAttribute("subTitle", genreName);
 		request.setAttribute("stories", stories);

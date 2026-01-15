@@ -36,7 +36,7 @@
                 </ul>
             </nav>
             <div class="admin-logout">
-                <a href="#" class="logout-btn">Đăng xuất</a>
+                <a href="${pageContext.request.contextPath}/logout" class="logout-btn">Đăng xuất</a>
             </div>
         </aside>
 

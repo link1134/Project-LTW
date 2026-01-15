@@ -80,7 +80,7 @@
 								</button>
 							</form>
 						</c:if>
-						<a href="#" class="btn btn-read-first">Đọc từ chương 1</a>
+						<a href="${pageContext.request.contextPath}/read-chapter?id=${chapters[0].id}" class="btn btn-read-first">Đọc từ chương 1</a>
 					</div>
 				</div>
 			</div>

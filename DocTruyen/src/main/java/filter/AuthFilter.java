@@ -33,33 +33,47 @@ public class AuthFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
 		String path = req.getRequestURI().substring(req.getContextPath().length());
+
+		
 		if (path.startsWith("/static/")) {
 			chain.doFilter(request, response);
 			return;
 		}
+
+		
 		if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/forgot-password")
-				|| path.startsWith("/reset-password") || path.startsWith("/verify-otp")) {
+				|| path.startsWith("/reset-password") || path.startsWith("/verify-otp")  || path.startsWith("/logout"))  {
 			chain.doFilter(request, response);
 			return;
 		}
-		HttpSession session = req.getSession(false);
-		if (session != null && session.getAttribute("user") != null) {
-			User user = (User) session.getAttribute("user");
-			if (path.startsWith("/admin") && !"ADMIN".equals(user.getRole())) {
-				res.sendRedirect(req.getContextPath() + "/login");
-				return;
-			}
 
-			chain.doFilter(request, response);
-		} else {
+		HttpSession session = req.getSession(false);
+
+		
+		if (session == null || session.getAttribute("user") == null) {
 			res.sendRedirect(req.getContextPath() + "/login");
+			return;
 		}
+
+		User user = (User) session.getAttribute("user");
+
+		
+		if (path.startsWith("/admin") && !"ADMIN".equals(user.getRole())) {
+			res.sendError(HttpServletResponse.SC_FORBIDDEN); // 403
+			return;
+		}
+		if (!path.startsWith("/admin") && "ADMIN".equals(user.getRole())) {
+		    res.sendRedirect(req.getContextPath() + "/admin/story-list");
+		    return;
+		}
+
+		
+		chain.doFilter(request, response);
 	}
 
 	public void destroy() {
